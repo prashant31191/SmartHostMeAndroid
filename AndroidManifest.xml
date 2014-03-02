@@ -45,6 +45,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".AppraiseActivity"/>
+        <activity android:name=".ListingsActivity"/>
+        <activity android:name=".SettingsActivity"/>
+
 
         <!-- Superbus -->
         <service

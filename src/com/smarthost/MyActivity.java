@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class MyActivity extends Activity {
+public class MyActivity extends BaseActivity {
 
 
     public static Intent getLaunchIntent(Context context) {
