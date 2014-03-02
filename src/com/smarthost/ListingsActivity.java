@@ -2,6 +2,8 @@ package com.smarthost;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import com.smarthost.ui.fragments.ListingsFragment;
 
 /**
  * User: davidredding
@@ -18,4 +20,9 @@ public class ListingsActivity extends BaseActivity {
         return i;
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initViews("title", R.drawable.ic_launcher, ListingsFragment.newInstance());
+    }
 }

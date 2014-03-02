@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import com.smarthost.ui.fragments.MyFragment;
 
 public class MyActivity extends BaseActivity {
 
@@ -18,6 +19,6 @@ public class MyActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        initViews("Intro", R.drawable.ic_launcher, MyFragment.newInstance());
     }
 }
