@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+		<item name="android:windowContentOverlay">@null</item>
+        <item name="numberPickerStyle">@style/ScrollPicker</item>
+        <item name="android:textColorPrimary">@color/selectable_text</item>
+        <item name="android:actionBarStyle">@style/ActionBar</item>
+    </style>
+
+    <style name="ActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+    	<item name="android:background">@color/actionbar_bg</item>
+    </style>
+    
+    <style name="ScrollPicker">
+        <item name="android:fadingEdge">vertical</item>
+        <item name="android:fadingEdgeLength">32dp</item>
+        <item name="android:layout">@layout/scroll_picker</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:solidColor">@android:color/transparent</item>
+        <item name="selectionDivider">@drawable/numberpicker_selection_divider</item>
+        <item name="selectionDividerHeight">2dp</item>
+    </style>
+    
+    <style name="Picker" parent="@style/ScrollPicker">
+        <item name="highlightColor">#BFCC0000</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+	</style>
+	
+    <style name="TimePicker" parent="@style/Picker">
+        <item name="android:textSize">26sp</item>
+	</style>
+
+    <style name="scheduler_button" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/selectable_bg_sp</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/selectable_text_red</item>
+        <item name="android:textAllCaps">true</item>
+	</style>
+    
+    <style name="scheduler_repeat_button" parent="@android:style/Widget.CompoundButton">
+        <item name="android:background">@drawable/btn_toggle</item>
+        <item name="android:textColor">@color/selectable_text</item>
+        <item name="android:gravity">center</item>
+    </style>
+    
+    <style name="bottom_button">
+        <item name="android:background">@drawable/selectable_bg_sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:paddingLeft">0dp</item>
+		<item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+	<style name="bottom_spinner" parent="@style/bottom_button">
+        <item name="android:background">@drawable/bg_spinner_alt</item>
+    </style>
+    
+    <style name="bottom_button_left" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:textColor">@color/selectable_text_red</item>
+        <item name="android:textAllCaps">true</item>
+	</style>
+    
+    <style name="bottom_button_right" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:textColor">@color/selectable_text</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+</resources>

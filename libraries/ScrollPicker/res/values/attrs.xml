@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="numberPickerStyle" format="reference" />
+
+    <declare-styleable name="ScrollPicker">
+        <attr name="solidColor" format="color|reference" />
+        <attr name="highlightColor" format="color|reference" />
+        <attr name="flingable" format="boolean" />
+        <attr name="virtualButtonPressedDrawable" format="reference" />
+        <attr name="selectionDivider" format="reference" />
+        <attr name="selectionDividerHeight" format="dimension" />
+        <attr name="android:minHeight" />
+        <attr name="android:maxHeight" />
+        <attr name="android:minWidth" />
+        <attr name="android:maxWidth" />
+        <attr name="android:orientation" />
+        <attr name="android:fadingEdgeLength" />
+        <attr name="android:layout" />
+        <attr name="android:textSize" />
+        <attr name="android:fontFamily" />
+    </declare-styleable>
+    
+    <declare-styleable name="SetPicker">
+        <attr name="maxWeight" format="integer" />
+        <attr name="maxReps" format="integer" />
+        <attr name="weightInterval" format="integer" />
+        <attr name="weightValue" format="integer" />
+        <attr name="repsValue" format="integer" />
+    </declare-styleable>
+    
+    <declare-styleable name="ScrollDatePicker">
+    	<attr name="android:startYear"></attr>
+    	<attr name="android:endYear"></attr>
+    	<attr name="android:minDate"></attr>
+    	<attr name="android:maxDate"></attr>
+    </declare-styleable>
+
+</resources>

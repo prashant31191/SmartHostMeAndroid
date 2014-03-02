@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <View
+        android:id="@+id/scheduler_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/scrollpicker_black_alpha"
+        android:clickable="true" />
+
+    <RelativeLayout
+        android:id="@+id/scheduler_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:background="@drawable/bg_scheduler" >
+
+        <Button
+            android:id="@+id/btn_one_shot"
+            style="@style/scheduler_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/one_shot" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@id/btn_one_shot"
+            android:layout_below="@id/btn_one_shot"
+            android:background="@color/scrollpicker_lt_gray" />
+
+        <Button
+            android:id="@+id/btn_repeat"
+            style="@style/scheduler_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@id/btn_one_shot"
+            android:layout_below="@id/btn_one_shot"
+            android:text="@string/repeat" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@id/btn_one_shot"
+            android:layout_below="@id/btn_repeat"
+            android:background="@color/scrollpicker_lt_gray" />
+
+        <Button
+            android:id="@+id/btn_every"
+            style="@style/scheduler_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@id/btn_one_shot"
+            android:layout_below="@id/btn_repeat"
+            android:text="@string/every" />
+
+        <ViewAnimator
+            android:id="@+id/scheduler_switcher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/btn_every"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/btn_one_shot"
+            android:layout_toRightOf="@id/btn_one_shot"
+            android:inAnimation="@anim/slide_in_right"
+            android:outAnimation="@anim/slide_out_right" >
+
+            <co.touchlab.android.scrollpicker.widget.ScrollDatePicker
+                android:id="@+id/scheduler_date_picker"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:padding="8dp" />
+
+            <co.touchlab.android.scrollpicker.widget.RepeatPicker
+                android:id="@+id/scheduler_repeat_picker"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"/>
+
+            <co.touchlab.android.scrollpicker.widget.IntervalPicker
+                android:id="@+id/scheduler_every_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="8dp"/>
+        </ViewAnimator>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/btn_every"
+            android:layout_alignTop="@id/btn_one_shot"
+            android:layout_toRightOf="@id/btn_one_shot"
+            android:background="@color/scrollpicker_lt_gray" />
+    </RelativeLayout>
+
+</FrameLayout>

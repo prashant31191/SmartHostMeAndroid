@@ -1,3 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="zero">0px</dimen>
+    <dimen name="one">1dp</dimen>
+
+    <dimen name="padding_micro">2dp</dimen>
+    <dimen name="padding_tiny">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_wedge">12dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+    <dimen name="padding_xlarge">32dp</dimen>
+    <dimen name="padding_xxlarge">48dp</dimen>
+
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_medium">14sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_xlarge">22sp</dimen>
+    <dimen name="text_xxlarge">26sp</dimen>
+    <dimen name="text_xxxlarge">32sp</dimen>
+    <dimen name="text_huge">48sp</dimen>
+    <dimen name="text_xhuge">64sp</dimen>
+
+    <dimen name="height_tiny">36dp</dimen>
+    <dimen name="height_small">48dp</dimen>
+    <dimen name="height_medium">56dp</dimen>
+    <dimen name="height_large">64dp</dimen>
+    <dimen name="height_xlarge">72dp</dimen>
+    <dimen name="height_xxlarge">80dp</dimen>
+
+    <dimen name="default_margin">@dimen/padding_medium</dimen>
+    <dimen name="default_list_margin">@dimen/padding_medium</dimen>
+    <dimen name="default_height">@dimen/height_small</dimen>
+
+    <dimen name="drawer_width">280dp</dimen>
+
+    <dimen name="graph_height">240dp</dimen>
+    <dimen name="media_height">216dp</dimen>
+
+    <dimen name="list_text_size">20sp</dimen>
+    <dimen name="list_media_height">200dp</dimen>
+    <dimen name="list_explore_height">88dp</dimen>
+    <dimen name="button_bar_text_size">16sp</dimen>
+
+    <dimen name="card_list_margin">@dimen/padding_wedge</dimen>
+
+    <dimen name="tab_min_width">96dp</dimen>
+    <dimen name="list_profile_height">140dp</dimen>
+
 </resources>

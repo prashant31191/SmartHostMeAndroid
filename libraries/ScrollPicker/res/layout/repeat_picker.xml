@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@drawable/divider_lt_gray"
+        android:orientation="horizontal"
+        android:showDividers="middle" >
+
+        <ToggleButton
+            android:id="@+id/repeat_btn_mon"
+            style="@style/scheduler_repeat_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textOff="@string/mon"
+            android:textOn="@string/mon" />
+
+        <ToggleButton
+            android:id="@+id/repeat_btn_tue"
+            style="@style/scheduler_repeat_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textOff="@string/tue"
+            android:textOn="@string/tue" />
+
+        <ToggleButton
+            android:id="@+id/repeat_btn_wed"
+            style="@style/scheduler_repeat_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textOff="@string/wed"
+            android:textOn="@string/wed" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/scrollpicker_lt_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@drawable/divider_lt_gray"
+        android:showDividers="middle" >
+
+        <ToggleButton
+            android:id="@+id/repeat_btn_thu"
+            style="@style/scheduler_repeat_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textOff="@string/thu"
+            android:textOn="@string/thu" />
+
+        <ToggleButton
+            android:id="@+id/repeat_btn_fri"
+            style="@style/scheduler_repeat_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textOff="@string/fri"
+            android:textOn="@string/fri" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/scrollpicker_lt_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@drawable/divider_lt_gray"
+        android:showDividers="middle" >
+
+        <ToggleButton
+            android:id="@+id/repeat_btn_sat"
+            style="@style/scheduler_repeat_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textOff="@string/sat"
+            android:textOn="@string/sat" />
+
+        <ToggleButton
+            android:id="@+id/repeat_btn_sun"
+            style="@style/scheduler_repeat_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textOff="@string/sun"
+            android:textOn="@string/sun" />
+    </LinearLayout>
+
+</LinearLayout>

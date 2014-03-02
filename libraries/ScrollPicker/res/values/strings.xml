@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ScrollPicker</string>
+    <string name="day">day</string>
+    <string name="days">days</string>
+    <string name="week">week</string>
+    <string name="weeks">weeks</string>
+    <string name="month">month</string>
+    <string name="months">months</string>
+    <string name="unit">lbs</string>
+    <string name="reps">reps</string>
+    
+    <string name="one_shot">ONE SHOT</string>
+    <string name="repeat">ON DAYS</string>
+    <string name="every">EVERY</string>
+    
+    <string name="mon">MON</string>
+    <string name="tue">TUE</string>
+    <string name="wed">WED</string>
+    <string name="thu">THU</string>
+    <string name="fri">FRI</string>
+    <string name="sat">SAT</string>
+    <string name="sun">SUN</string>
+    
+	<string name="time_picker_separator">:</string>
+    
+	<string name="until">UNTIL</string>
+    
+	<string name="dismiss">DISMISS</string>
+    
+	<string name="update">UPDATE</string>
+    
+	<string name="every_day">EVERY DAY</string>
+    
+	<string name="removed">Removed</string>
+	<string name="until_removed">Until Removed</string>
+	
+	<string name="until_date">Until Date</string>
+</resources>

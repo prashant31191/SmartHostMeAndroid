@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="horizontal"
+    android:layoutDirection="ltr" >
+
+    <co.touchlab.android.scrollpicker.widget.ScrollPicker
+        android:id="@+id/hour"
+        style="@style/TimePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="6dip"
+        android:layout_marginStart="16dip"/>
+
+    <TextView
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:importantForAccessibility="no" />
+
+    <co.touchlab.android.scrollpicker.widget.ScrollPicker
+        android:id="@+id/minute"
+        style="@style/TimePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dip"
+        android:layout_marginStart="6dip" />
+
+    <co.touchlab.android.scrollpicker.widget.ScrollPicker
+        android:id="@+id/amPm"
+        style="@style/TimePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="16dip"
+        android:layout_marginStart="8dip"/>
+
+</LinearLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pickers"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <co.touchlab.android.scrollpicker.widget.ScrollPicker
+        android:id="@+id/month"
+        style="@style/TimePicker"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1" />
+
+    <co.touchlab.android.scrollpicker.widget.ScrollPicker
+        android:id="@+id/day"
+        style="@style/TimePicker"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1" />
+
+    <co.touchlab.android.scrollpicker.widget.ScrollPicker
+        android:id="@+id/year"
+        style="@style/TimePicker"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

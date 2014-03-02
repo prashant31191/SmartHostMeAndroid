@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.smarthost"
-          android:versionCode="1"
-          android:versionName="1.0">
+          android:versionCode="02"
+          android:versionName="0.2">
+
+    <compatible-screens>
+        <!-- all small size screens -->
+        <screen android:screenSize="small" android:screenDensity="ldpi" />
+        <screen android:screenSize="small" android:screenDensity="mdpi" />
+        <screen android:screenSize="small" android:screenDensity="hdpi" />
+        <screen android:screenSize="small" android:screenDensity="xhdpi" />
+        <!-- all normal size screens -->
+        <screen android:screenSize="normal" android:screenDensity="ldpi" />
+        <screen android:screenSize="normal" android:screenDensity="mdpi" />
+        <screen android:screenSize="normal" android:screenDensity="hdpi" />
+        <screen android:screenSize="normal" android:screenDensity="xhdpi" />
+    </compatible-screens>
+
 
     <uses-sdk android:minSdkVersion="15"/>
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+            android:name="com.smarthost.permission.C2D_MESSAGE"
+            android:protectionLevel="signature" />
+    <uses-permission android:name="com.smarthost.permission.C2D_MESSAGE" />
+
+
     <application
             android:label="@string/app_name"
             android:icon="@drawable/ic_launcher">
@@ -16,5 +44,36 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+
+        <!-- Superbus -->
+        <service
+                android:name="co.touchlab.android.superbus.SuperbusService"
+                android:exported="false" />
+        <receiver android:name="co.touchlab.android.superbus.network.ConnectionChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Issue Reporting -->
+        <service
+                android:name="co.touchlab.ir.process.UploadManagerService"
+                android:exported="false"
+                android:process=":ir" />
+
+        <!-- Google cloud messaging -->
+        <receiver
+                android:name=".GCMBroadcastReceiver"
+                android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="co.touchlab.android.gymlitics" />
+            </intent-filter>
+        </receiver>
+
+
+
     </application>
 </manifest>

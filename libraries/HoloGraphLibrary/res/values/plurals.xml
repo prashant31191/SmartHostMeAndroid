@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <plurals name="formattedWeight">
+        <item quantity="one">1 lb</item>
+        <item quantity="other">%1$s lbs</item>
+    </plurals>
+
+</resources>

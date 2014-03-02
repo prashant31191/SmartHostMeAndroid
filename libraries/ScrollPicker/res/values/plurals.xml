@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="day">
+        <item quantity="one">@string/day</item>
+        <item quantity="other">@string/days</item>
+    </plurals>
+
+    <plurals name="week">
+        <item quantity="one">@string/week</item>
+        <item quantity="other">@string/weeks</item>
+    </plurals>
+    
+    <plurals name="month">
+        <item quantity="one">@string/month</item>
+        <item quantity="other">@string/months</item>
+    </plurals>
+</resources>

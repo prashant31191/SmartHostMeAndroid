@@ -18,8 +18,7 @@ package com.smarthost.ui.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-
-import co.touchlab.android.gymlitics.ui.views.ContextWrapperEdgeEffect;
+import com.smarthost.ui.views.ContextWrapperEdgeEffect;
 
 public class CustomListView extends android.widget.ListView {
 

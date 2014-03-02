@@ -1,0 +1,15 @@
+<resources>
+
+    <!-- Misc Strings -->
+    <string name="app_name">HoloGraphLibrary</string>
+    <string name="value">123</string>
+    <string name="week_previous">Last week</string>
+    <string name="week_current">This week</string>
+
+    <!-- Plurals -->
+    <string name="value_one">1 lb</string>
+    <string name="value_zero">Banana</string>
+    <string name="value_other">%1$s lbs</string>
+    <string name="no_data">No Data</string>
+
+</resources>

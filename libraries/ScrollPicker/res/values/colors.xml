@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="scrollpicker_red">#FFCC0000</color>
+    <color name="scrollpicker_red_alpha">#BFCC0000</color>
+    <color name="scrollpicker_white">#FFEEEEEE</color>
+    <color name="scrollpicker_black">#FF333333</color>
+    <color name="scrollpicker_black_alpha">#80333333</color>
+    <color name="scrollpicker_lt_gray">#FFE0E0E0</color>
+
+    <color name="actionbar_bg">#FF222222</color>
+</resources>

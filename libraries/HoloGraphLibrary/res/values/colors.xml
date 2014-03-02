@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="current_color">#FF27b4e7</color>
+    <color name="previous_color">#FFffbd17</color>
+    <color name="text_color_bar">@android:color/white</color>
+    <color name="text_color">#FF303030</color>
+</resources>
