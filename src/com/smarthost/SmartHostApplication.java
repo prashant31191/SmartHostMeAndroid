@@ -50,15 +50,15 @@ public class SmartHostApplication extends StrictApplication implements Persisted
         {
             mPersistenceProvider = new GsonSqlitePersistenceProvider(new MyDatabaseFactory());
 
-//            new Thread()
-//            {
-//                @Override
-//                public void run()
-//                {
-//                    SuperbusService.notifyStart(SmartHostApplication.this);
-//                    BusHelper.submitCommandSync(SmartHostApplication.this, new GlobalConfigDataLoadCommand());
-//                }
-//            }.start();
+            new Thread()
+            {
+                @Override
+                public void run()
+                {
+                    SuperbusService.notifyStart(SmartHostApplication.this);
+                    //BusHelper.submitCommandSync(SmartHostApplication.this, new GlobalConfigDataLoadCommand());
+                }
+            }.start();
         }
 
         catch (StorageException e)

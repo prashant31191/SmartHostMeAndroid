@@ -11,7 +11,7 @@ import com.smarthost.ui.fragments.ListingsFragment;
  * Date: 3/2/14
  * Time: 2:53 PM
  */
-public class AppraiseActivity extends BaseActivity {
+public class AppraiseActivity extends BaseActivity implements AppraiseFragment.AppraiseFragmentListener{
 
     public static Intent getLaunchIntent(Context context) {
         Intent i = new Intent(context, AppraiseActivity.class);
@@ -23,7 +23,11 @@ public class AppraiseActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initViews("title", R.drawable.ic_launcher, AppraiseFragment.newInstance());
+        initViews("Appraisals", R.drawable.ic_launcher, AppraiseFragment.newInstance());
     }
 
+    @Override
+    public void buttonClicked() {
+
+    }
 }

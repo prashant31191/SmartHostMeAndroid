@@ -9,5 +9,6 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="settings_stuff">Settings stuff</string>
+    <string name="where_to_search">Where do you want to search?</string>
 
 </resources>

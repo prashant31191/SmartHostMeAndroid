@@ -29,16 +29,17 @@ public abstract class AbstractBaseNetworkCommand extends SqliteCommand {
     @Override
     public void callCommand(Context context) throws TransientException, PermanentException {
 
-        BusHttpClient httpClient = new BusHttpClient(DataHelper.APP_URL);
+        BusHttpClient httpClient = new BusHttpClient(DataHelper.LOCALHOST);
         try
         {
+
 
             ParameterMap params = httpClient.newParams();
 
             fillParams(params, context);
 
-            httpClient.setConnectionTimeout(10000);
-            HttpResponse httpResponse = httpClient.post(getPath(), params);
+            httpClient.setConnectionTimeout(5000);
+            HttpResponse httpResponse = httpClient.get(getPath(), params);
 
             //Check if anything went south
             httpClient.checkAndThrowError();

@@ -17,23 +17,23 @@ public class MyFragment extends Fragment implements View.OnClickListener {
 
     public static final String TAG = SettingsFragment.class.getSimpleName();
 
-    protected AppraiseFragmentListener mListener;
+    protected MyFragmentListner mListener;
 
-    public interface AppraiseFragmentListener{
+    public interface MyFragmentListner{
         void buttonClicked();
     }
 
-    public static SettingsFragment newInstance() {
-        return new SettingsFragment ();
+    public static MyFragment newInstance() {
+        return new MyFragment ();
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (AppraiseFragmentListener) activity;
+            mListener = (MyFragmentListner) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString() + "must implement SettingsFragment.SettingsItemCallback");
+            throw new ClassCastException(activity.toString() + "must implement MyFragmentListner");
         }
     }
 

@@ -23,8 +23,8 @@ public class AppraiseFragment extends Fragment implements View.OnClickListener {
         void buttonClicked();
     }
 
-    public static SettingsFragment newInstance() {
-        return new SettingsFragment ();
+    public static AppraiseFragment newInstance() {
+        return new AppraiseFragment ();
     }
 
     @Override
@@ -33,13 +33,13 @@ public class AppraiseFragment extends Fragment implements View.OnClickListener {
         try {
             mListener = (AppraiseFragmentListener) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString() + "must implement SettingsFragment.SettingsItemCallback");
+            throw new ClassCastException(activity.toString() + "must implement AppraiseFragmentListener");
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        return inflater.inflate(R.layout.fragment_appraise, container, false);
     }
 
     @Override

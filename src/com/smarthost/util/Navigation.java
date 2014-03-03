@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Navigation {
 
-    public static final int COUNT = 5;
+    public static final int COUNT = 2;
 
     public static final int
             ID_APPRAISALS= 0,

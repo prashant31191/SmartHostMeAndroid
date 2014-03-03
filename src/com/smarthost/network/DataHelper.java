@@ -29,6 +29,10 @@ public class DataHelper
 
     public static final String APP_URL = "http://heavydev.herokuapp.com/";
 
+//    public static final String LOCALHOST  = "localhost:5000/api/";
+
+    public static final String LOCALHOST  = "http://www.smarthost.me/api/";
+
     interface RunOp
     {
         String path();

@@ -10,8 +10,11 @@ import com.smarthost.ui.fragments.ListingsFragment;
  * Date: 3/2/14
  * Time: 2:52 PM
  */
-public class ListingsActivity extends BaseActivity {
+public class ListingsActivity extends BaseActivity implements ListingsFragment.ListingsFragmentListener {
+    @Override
+    public void buttonClicked() {
 
+    }
 
     public static Intent getLaunchIntent(Context context) {
         Intent i = new Intent(context, ListingsActivity.class);
@@ -23,6 +26,6 @@ public class ListingsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initViews("title", R.drawable.ic_launcher, ListingsFragment.newInstance());
+        initViews("Listings", R.drawable.ic_launcher, ListingsFragment.newInstance());
     }
 }
