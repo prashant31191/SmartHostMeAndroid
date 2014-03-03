@@ -8,9 +8,10 @@
     <com.smarthost.ui.widget.CustomListView
             android:id="@+id/drawer_list"
             android:layout_width="match_parent"
+            style="@style/drawer_list"
             android:layout_height="match_parent"
             android:layout_above="@+id/drawer_divider" />
-    <!--style="@style/drawer_list"-->
+
     <View
             android:id="@+id/drawer_divider"
             android:layout_width="match_parent"
@@ -21,15 +22,15 @@
 
     <TextView
             android:id="@+id/drawer_settings"
-
+            style="@style/drawer_list_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:clickable="true"
-            android:textColor="@color/logo_yellow"
+            android:textColor="@color/sh_logo_yellow"
             android:focusable="true"
             android:onClick="onSettingsClick"
             android:text="@string/settings" />
-    <!--style="@style/drawer_list_item"-->
+
 
 </RelativeLayout>

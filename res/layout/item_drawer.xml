@@ -1,7 +1,7 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:app="http://schemas.android.com/apk/res-auto"
           android:id="@android:id/text1"
-          android:textColor="@color/logo_yellow"
+          android:textColor="@color/sh_logo_yellow"
+          style="@style/drawer_list_item"
           android:layout_width="match_parent"
           android:layout_height="wrap_content" />
-        <!--style="@style/drawer_list_item"-->

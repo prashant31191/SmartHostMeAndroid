@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="logo_green">#00715D</color>
-    <color name="logo_yellow">#FEE161</color>
+    <color name="sh_logo_green">#00715D</color>
+    <color name="sh_logo_yellow">#FEE161</color>
+    <color name="sh_divider">#FF919191</color>
+    <color name="sh_dark_divider">#FFd0d0d0</color>
+
+    <color name="sh_text">#FF555555</color>
+    <color name="sh_dark_text">#FF303030</color>
+
+    <color name="sh_green">#FF14a92d</color>
+    <color name="sh_blue">#FF27b4e7</color>
+    <color name="sh_orange">#FFffbd17</color>
+
+    <color name="sh_light_red_alpha">#54fdc5af</color>
+    <color name="sh_red">#FFCC0000</color>
+    <color name="sh_red_alpha">#BFCC0000</color>
+
+    <color name="black_alpha">#B3000000</color>
+    <color name="black_alpha_alt">#0F000000</color>
+    <color name="sh_black">#FF111111</color>
+    <color name="sh_black_alpha">#BF111111</color>
+
+    <color name="sh_white">#FFEEEEEE</color>
+    <color name="sh_white_alpha">#BFEEEEEE</color>
+
+    <color name="sh_lt_gray">#FFCCCCCC</color>
+    <color name="sh_gray">#FF999999</color>
+    <color name="sh_med_gray">#FF666666</color>
+    <color name="sh_dark_gray">#FF333333</color>
+
+    <color name="drawer_bg">#E6FEFEFE</color>
+
+    <color name="ab_bg">#FF111111</color>
+    <color name="ab_bg_alpha">#99111111</color>
+
+    <color name="indicator_text">#FFAAAAAA</color>
+
+
 </resources>
+

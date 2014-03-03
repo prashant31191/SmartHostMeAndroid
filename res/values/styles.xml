@@ -1,3 +1,438 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="SmartHost" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <!--<item name="android:windowBackground">@drawable/bg_window</item>-->
+        <item name="android:actionBarStyle">@style/SmartHost.ActionBar</item>
+        <!--<item name="android:actionBarItemBackground">@drawable/selectable_bg</item>-->
+        <item name="android:actionDropDownStyle">@style/Widget.SmartHost.ActionBar.Spinner</item>
+        <item name="android:actionBarWidgetTheme">@style/Widget.SmartHost.ActionBar</item>
+        <!--<item name="android:selectableItemBackground">@drawable/selectable_bg</item>-->
+        <!--<item name="android:listChoiceBackgroundIndicator">@drawable/selector_list_item</item>-->
+        <!--<item name="android:activatedBackgroundIndicator">@drawable/bg_activated</item>-->
+        <item name="android:radioButtonStyle">@style/Widget.SmartHost.RadioButton</item>
+        <item name="android:listViewStyle">@style/SmartHost.ListView</item>
+        <item name="android:editTextStyle">@style/Widget.SmartHost.EditText</item>
+        <item name="android:spinnerStyle">@style/Widget.SmartHost.Spinner</item>
+        <item name="android:spinnerDropDownItemStyle">@style/Widget.SmartHost.Spinner.DropDownItem</item>
+        <item name="android:spinnerItemStyle">@style/Widget.SmartHost.Spinner.SpinnerItem</item>
+        <item name="android:imageButtonStyle">@style/Widget.SmartHost.ImageButton</item>
+        <item name="android:buttonBarStyle">@style/Widget.SmartHost.ButtonBar</item>
+        <item name="android:buttonBarButtonStyle">@style/Widget.SmartHost.ButtonBar.Button</item>
+        <item name="android:textAppearanceLarge">@style/TextAppearance.SmartHost.Large</item>
+        <item name="android:textAppearanceLargeInverse">@style/TextAppearance.SmartHost.Large.Inverse</item>
+        <item name="android:textAppearanceMedium">@style/TextAppearance.SmartHost.Medium</item>
+        <item name="android:textAppearanceMediumInverse">@style/TextAppearance.SmartHost.Medium.Inverse</item>
+        <item name="android:textAppearanceSmall">@style/TextAppearance.SmartHost.Small</item>
+        <item name="android:textAppearanceListItem">@style/TextAppearance.SmartHost.Large</item>
+        <item name="android:textAppearanceListItemSmall">@style/TextAppearance.SmartHost.Spinner</item>
+        <!--<item name="android:textColorPrimary">@color/selectable_text_dark</item>-->
+        <!--<item name="android:textColorSecondary">@color/selectable_text_lt</item>-->
+        <!--<item name="switchStyle">@style/Widget.SmartHost.CompoundButton.Switch</item>-->
+        <!--<item name="switchPreferenceStyle">@style/Preference.SwitchPreference</item>-->
+        <item name="vpiTabPageIndicatorStyle">@style/SmartHost.TabIndicator</item>
+        <item name="vpiTitlePageIndicatorStyle">@style/SmartHost.TitleIndicator</item>
+        <!--<item name="stackedTabPageIndicatorStyle">@style/SmartHost.StackedTabIndicator</item>-->
+
+    </style>
+
+    <style name="SmartHost.ActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <!--<item name="android:background">@color/ab_bg</item>-->
+        <item name="android:displayOptions">showHome|useLogo</item>
+        <item name="android:titleTextStyle">@style/SmartHost.ActionBar.Title</item>
+    </style>
+
+    <style name="SmartHost.ActionBar.Title" parent="android:style/TextAppearance.Holo.Widget.ActionBar.Title.Inverse">
+        <!--<item name="android:fontFamily">sans-serif-light</item>-->
+        <item name="android:textSize">@dimen/list_text_size</item>
+    </style>
+
+    <style name="SmartHost.TabIndicator" parent="Widget.TabPageIndicator">
+        <item name="android:background">@drawable/bg_tabs</item>
+        <item name="android:divider">@drawable/custom_tab_indicator_divider</item>
+        <item name="android:minHeight">@dimen/default_height</item>
+        <item name="android:minWidth">@dimen/tab_min_width</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:paddingLeft">@dimen/padding_medium</item>
+        <item name="android:paddingRight">@dimen/padding_medium</item>
+        <item name="android:fadingEdge">horizontal</item>
+        <item name="android:fadingEdgeLength">@dimen/padding_small</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:lines">1</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/selectable_text_lt</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="SmartHost.StackedTabIndicator" parent="SmartHost.TabIndicator">
+        <item name="android:paddingTop">@dimen/padding_tiny</item>
+        <item name="android:paddingBottom">@dimen/padding_tiny</item>
+        <item name="android:minWidth">@dimen/height_medium</item>
+        <item name="android:lines">2</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="SmartHost.TitleIndicator">
+        <item name="android:background">@color/sh_white</item>
+        <item name="footerColor">@color/sh_red</item>
+        <item name="footerLineHeight">0dp</item>
+        <item name="footerIndicatorHeight">@dimen/padding_tiny</item>
+        <item name="footerIndicatorStyle">underline</item>
+        <item name="android:textColor">@color/sh_gray</item>
+        <item name="selectedColor">@color/sh_dark_gray</item>
+        <item name="selectedBold">false</item>
+        <item name="titlePadding">48dp</item>
+        <item name="android:textSize">@dimen/button_bar_text_size</item>
+    </style>
+
+    <style name="SmartHost.ListView" parent="@android:style/Widget.ListView">
+        <item name="android:clipToPadding">false</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:paddingLeft">@dimen/default_list_margin</item>
+        <item name="android:paddingRight">@dimen/default_list_margin</item>
+        <item name="android:paddingTop">@dimen/default_margin</item>
+        <item name="android:paddingBottom">@dimen/default_margin</item>
+        <!--<item name="android:listSelector">@drawable/selector_list_item</item>-->
+        <!--<item name="android:divider">@color/sh_lt_gray</item>-->
+        <item name="android:dividerHeight">@dimen/one</item>
+    </style>
+
+    <style name="SmartHost.ListView.QuickReturn">
+        <item name="android:paddingBottom">@dimen/height_large</item>
+        <item name="android:paddingTop">@dimen/default_margin</item>
+    </style>
+
+    <style name="SmartHost.ListView.Cards">
+        <item name="android:paddingLeft">@dimen/card_list_margin</item>
+        <item name="android:paddingRight">@dimen/card_list_margin</item>
+        <item name="android:paddingTop">@dimen/default_margin</item>
+        <item name="android:paddingBottom">@dimen/default_margin</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">@dimen/default_margin</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+    </style>
+
+    <style name="SmartHost.ListView.Cards.QuickReturn">
+        <item name="android:paddingBottom">@dimen/height_large</item>
+    </style>
+
+    <style name="SmartHost.DragSortListView" parent="@style/SmartHost.ListView">
+        <!--<item name="float_alpha">0.7</item>-->
+        <!--<item name="slide_shuffle_speed">0.5</item>-->
+        <!--<item name="remove_enabled">true</item>-->
+        <!--<item name="drag_start_mode">onMove</item>-->
+        <!--<item name="drag_handle_id">@id/drag_img</item>-->
+        <!--<item name="fling_handle_id">@id/drag_img</item>-->
+        <!--<item name="float_background_color">@color/sh_red</item>-->
+    </style>
+
+    <style name="SmartHost.GridView">
+        <item name="android:clipToPadding">false</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:padding">@dimen/default_margin</item>
+        <!--<item name="android:numColumns">@integer/gridview_columns_alt</item>-->
+        <item name="android:verticalSpacing">@dimen/default_margin</item>
+        <item name="android:horizontalSpacing">@dimen/padding_wedge</item>
+        <!--<item name="android:listSelector">@drawable/selector_grid_item</item>-->
+        <item name="android:drawSelectorOnTop">true</item>
+    </style>
+
+    <style name="SmartHost.DragSortListView.QuickReturn">
+        <item name="android:paddingBottom">@dimen/height_large</item>
+        <item name="android:paddingTop">@dimen/default_margin</item>
+    </style>
+
+    <style name="SmartHost.Overflow" parent="android:style/Widget.ActionButton">
+        <!--<item name="android:src">@drawable/ic_action_overflow_small</item>-->
+        <item name="android:minWidth">@dimen/padding_xlarge</item>
+    </style>
+
+    <style name="Widget.SmartHost.ActionBar" parent="android:Theme.Holo">
+        <item name="android:spinnerStyle">@style/Widget.SmartHost.ActionBar.Spinner</item>
+        <item name="android:spinnerItemStyle">@style/Widget.SmartHost.Spinner.SpinnerItem.Inverse</item>
+        <item name="android:spinnerDropDownItemStyle">@style/Widget.SmartHost.ActionBar.DropDownItem</item>
+        <!--<item name="android:activatedBackgroundIndicator">@drawable/bg_activated</item>-->
+        <item name="android:textAppearanceListItemSmall">@style/TextAppearance.SmartHost.Spinner.Inverse</item>
+        <item name="android:editTextStyle">@style/Widget.SmartHost.EditText.Inverse</item>
+    </style>
+
+    <style name="Widget.SmartHost.ActionBar.DropDownItem" parent="android:Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textAppearance">@style/TextAppearance.SmartHost.Spinner</item>
+    </style>
+
+    <style name="Widget.SmartHost.ActionBar.Spinner" parent="android:Widget.Holo.Spinner">
+        <!--<item name="android:background">@drawable/bg_spinner_ab</item>-->
+    </style>
+
+    <style name="Widget.SmartHost.ButtonBar" parent="android:Holo.Light.ButtonBar">
+        <!--<item name="android:background">@color/sh_white</item>-->
+        <item name="android:dividerPadding">@dimen/zero</item>
+        <item name="android:divider">?android:attr/dividerVertical</item>
+        <!--<item name="android:background">@drawable/bg_button_bar</item>-->
+    </style>
+
+    <style name="Widget.SmartHost.ButtonBar.Button" parent="android:Widget.Holo.Button.Borderless">
+        <item name="android:textAppearance">@style/TextAppearance.SmartHost.ButtonBar</item>
+        <item name="android:textSize">@dimen/button_bar_text_size</item>
+        <item name="android:minHeight">@dimen/default_height</item>
+    </style>
+
+    <style name="Widget.SmartHost.CheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <!--<item name="android:background">@drawable/bg_checkbox</item>-->
+        <item name="android:button">@null</item>
+    </style>
+
+    <style name="Widget.SmartHost.EditText" parent="android:Widget.Holo.Light.EditText">
+        <item name="android:textAppearance">@style/TextAppearance.SmartHost.Large</item>
+        <!--<item name="android:background">@drawable/bg_edittext</item>-->
+        <!--<item name="android:textColor">@color/sh_dark_text</item>-->
+    </style>
+
+    <style name="Widget.SmartHost.EditText.Inverse">
+        <item name="android:textAppearance">@style/TextAppearance.SmartHost.Large.Inverse</item>
+        <!--<item name="android:background">@drawable/bg_edittext_inverse</item>-->
+    </style>
+
+    <style name="Widget.SmartHost.ImageButton" parent="android:Widget.ImageButton">
+        <!--<item name="android:background">@drawable/selectable_bg</item>-->
+    </style>
+
+    <style name="Widget.SmartHost.RadioButton"  parent="android:Widget.Holo.Light.CompoundButton.RadioButton">
+        <!--<item name="android:button">@drawable/bg_radio</item>-->
+    </style>
+
+    <style name="Widget.SmartHost.RadioButton.Inverse"  parent="android:Widget.Holo.Light.CompoundButton.RadioButton">
+        <item name="android:button">@null</item>
+        <!--<item name="android:drawableRight">@drawable/bg_radio</item>-->
+    </style>
+
+    <style name="Widget.SmartHost.Spinner" parent="android:Widget.Holo.Light.Spinner">
+        <!--<item name="android:background">@drawable/bg_spinner</item>-->
+        <item name="android:spinnerMode">dropdown</item>
+    </style>
+
+    <style name="Widget.SmartHost.Spinner.DropDownItem" parent="android:Widget.Holo.Light.DropDownItem.Spinner">
+        <item name="android:textAppearance">@style/TextAppearance.SmartHost.Spinner</item>
+    </style>
+
+    <style name="Widget.SmartHost.Spinner.Alt">
+        <!--<item name="android:background">@drawable/bg_spinner_alt</item>-->
+    </style>
+
+    <style name="Widget.SmartHost.Spinner.SpinnerItem" parent="android:Widget.Holo.TextView.SpinnerItem">
+        <item name="android:textAppearance">@style/TextAppearance.SmartHost.Spinner</item>
+        <!--<item name="android:paddingStart">@dimen/padding_wedge</item>-->
+        <!--<item name="android:paddingEnd">@dimen/padding_wedge</item>-->
+    </style>
+
+    <style name="Widget.SmartHost.Spinner.SpinnerItem.Inverse">
+        <item name="android:textAppearance">@style/TextAppearance.SmartHost.Spinner.Inverse</item>
+    </style>
+
+    <!--<style name="Widget.SmartHost.CompoundButton.Switch" parent="Widget.Holo.Light.CompoundButton.Switch">-->
+        <!--<item name="track">@drawable/switch_track</item>-->
+        <!--<item name="thumb">@drawable/switch_inner</item>-->
+        <!--<item name="switchTextAppearance">@android:style/TextAppearance.Small</item>-->
+    <!--</style>-->
+
+    <style name="TextAppearance.SmartHost.ButtonBar" parent="android:TextAppearance.Large">
+        <!--<item name="android:textColor">@color/selectable_text_dark</item>-->
+        <item name="android:textSize">@dimen/button_bar_text_size</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.SmartHost.Large" parent="android:TextAppearance.Large">
+        <!--<item name="android:fontFamily">sans-serif-light</item>-->
+        <item name="android:textSize">@dimen/list_text_size</item>
+        <!--<item name="android:textColor">@color/selectable_text_dark</item>-->
+    </style>
+
+    <style name="TextAppearance.SmartHost.Large.Inverse">
+        <!--<item name="android:textColor">@color/sh_white</item>-->
+    </style>
+
+    <style name="TextAppearance.SmartHost.Medium" parent="android:TextAppearance.Medium">
+        <!--<item name="android:fontFamily">sans-serif-light</item>-->
+        <!--<item name="android:textColor">@color/selectable_text_dark</item>-->
+    </style>
+
+    <style name="TextAppearance.SmartHost.Medium.Inverse">
+        <!--<item name="android:textColor">@color/sh_white</item>-->
+    </style>
+
+    <style name="TextAppearance.SmartHost.Spinner" parent="android:TextAppearance.Medium">
+        <!--<item name="android:fontFamily">sans-serif-light</item>-->
+        <item name="android:textSize">@dimen/text_large</item>
+        <!--<item name="android:textColor">@color/selectable_text_dark</item>-->
+    </style>
+
+    <style name="TextAppearance.SmartHost.Spinner.Inverse">
+        <!--<item name="android:textColor">@color/sh_white</item>-->
+    </style>
+
+    <style name="TextAppearance.SmartHost.Small" parent="android:TextAppearance">
+        <!--<item name="android:fontFamily">sans-serif-normal</item>-->
+        <item name="android:textSize">@dimen/text_medium</item>
+        <!--<item name="android:textColor">@color/selectable_text_lt</item>-->
+    </style>
+
+    <style name="TextAppearance.SmartHost.Small.Light">
+        <!--<item name="android:fontFamily">sans-serif-light</item>-->
+    </style>
+
+    <style name="TextAppearance.SmartHost.Empty" parent="TextAppearance.SmartHost.Large">
+        <item name="android:padding">48dp</item>
+        <!--<item name="android:drawableBottom">@drawable/ic_action_add_red</item>-->
+        <!--<item name="android:textColor">@color/sh_black</item>-->
+        <item name="android:layout_gravity">center</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="drawer_list" parent="SmartHost.ListView">
+        <item name="android:choiceMode">singleChoice</item>
+        <!--<item name="android:listSelector">@drawable/selectable_bg</item>-->
+        <item name="android:padding">@dimen/zero</item>
+        <item name="android:scrollbars">none</item>
+    </style>
+
+    <style name="drawer_list_item" parent="android:Widget.Holo.Light.TextView">
+        <!--<item name="android:background">@drawable/selectable_bg</item>-->
+        <item name="android:drawablePadding">@dimen/padding_small</item>
+        <!--<item name="android:fontFamily">sans-serif-light</item>-->
+        <!--<item name="fontFamily">light</item>-->
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">?android:attr/listPreferredItemHeight</item>
+        <item name="android:paddingLeft">@dimen/default_margin</item>
+        <item name="android:paddingRight">@dimen/default_margin</item>
+        <!--<item name="android:textColor">@color/selectable_text_dark</item>-->
+        <item name="android:textSize">@dimen/list_text_size</item>
+    </style>
+
+    <style name="schedule_bottombar_text">
+        <item name="android:textAppearance">@style/TextAppearance.SmartHost.ButtonBar</item>
+        <item name="android:drawablePadding">@dimen/padding_tiny</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SmartHost.TranslucentActionBar">
+        <item name="android:actionBarStyle">@style/SmartHost.ActionBar</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="set_list_item_text_container">
+        <item name="android:layout_width">@dimen/zero</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="set_list_item_text" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="android:textColor">@color/sh_dark_text</item>-->
+        <!--<item name="android:fontFamily">sans-serif-thin</item>-->
+        <!--<item name="fontFamily">light</item>-->
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="set_list_item_value" parent="set_list_item_text">
+        <item name="android:textSize">@dimen/text_xxxlarge</item>
+        <item name="android:paddingRight">@dimen/padding_small</item>
+    </style>
+
+
+    <style name="set_list_item_value_small" parent="set_list_item_text">
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:paddingRight">@dimen/padding_small</item>
+    </style>
+
+    <style name="set_list_item_edit" parent="set_list_item_value">
+        <item name="android:textSize">@dimen/text_xxxlarge</item>
+        <item name="android:paddingRight">@dimen/padding_small</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">3</item>
+    </style>
+
+    <style name="set_list_item_edit.alt">
+        <!--<item name="android:background">@drawable/bg_edittext_alt</item>-->
+    </style>
+
+    <style name="set_list_item_label" parent="set_list_item_text">
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="divider_horizontal">
+        <!--<item name="android:background">@color/sh_lt_gray</item>-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/one</item>
+    </style>
+
+    <style name="divider_vertical">
+        <item name="android:background">?android:dividerVertical</item>
+        <item name="android:layout_width">@dimen/one</item>
+        <item name="android:layout_margin">@dimen/padding_wedge</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!--<style name="item_agenda_workout_title" parent="android:Widget.Holo.Light.TextView">-->
+        <!--<item name="android:ellipsize">end</item>-->
+        <!--<item name="android:fontFamily">sans-serif-light</item>-->
+        <!--<item name="fontFamily">light</item>-->
+        <!--<item name="android:maxLines">1</item>-->
+        <!--<item name="android:paddingLeft">@dimen/default_margin</item>-->
+        <!--<item name="android:paddingRight">@dimen/default_margin</item>-->
+        <!--<item name="android:drawablePadding">@dimen/padding_small</item>-->
+        <!--<item name="android:textColor">@color/selectable_text_med</item>-->
+        <!--<item name="android:textSize">@dimen/text_large</item>-->
+        <!--<item name="android:duplicateParentState">true</item>-->
+    <!--</style>-->
+
+    <!--<style name="item_agenda_workout_button" parent="@android:style/Widget.ActionButton">-->
+        <!--<item name="android:minWidth">@dimen/height_tiny</item>-->
+        <!--<item name="android:src">@drawable/ic_action_overflow_small</item>-->
+    <!--</style>-->
+
+    <!--<style name="item_agenda_workout_container">-->
+        <!--<item name="android:background">@drawable/selector_list_item</item>-->
+        <!--<item name="android:clickable">true</item>-->
+        <!--<item name="android:divider">@drawable/divider_vertical</item>-->
+        <!--<item name="android:dividerPadding">@dimen/padding_small</item>-->
+        <!--<item name="android:showDividers">middle</item>-->
+    <!--</style>-->
+
+    <style name="ab_done" parent="android:Widget.Holo.Light.TextView">
+        <!--<item name="android:background">@drawable/selectable_bg</item>-->
+        <item name="android:clickable">true</item>
+        <item name="android:drawablePadding">@dimen/padding_wedge</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/padding_wedge</item>
+        <item name="android:paddingRight">@dimen/padding_large</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!--<style name="hint_card_list_item" parent="android:Widget.Holo.Light.TextView">-->
+        <!--<item name="android:background">@drawable/selectable_bg</item>-->
+        <!--<item name="android:focusable">true</item>-->
+        <!--<item name="android:textColor">@color/selectable_text_red</item>-->
+        <!--<item name="android:textSize">@dimen/text_large</item>-->
+        <!--<item name="android:drawablePadding">@dimen/padding_small</item>-->
+        <!--<item name="android:paddingLeft">@dimen/default_margin</item>-->
+        <!--<item name="android:paddingRight">@dimen/default_margin</item>-->
+        <!--<item name="android:gravity">center_vertical</item>-->
+    <!--</style>-->
+
+    <style name="Theme.Heavy.Dialog" parent="android:Theme.Holo.Dialog">
+        <item name="android:windowBackground">@drawable/background_white</item>
+        <item name="android:windowMinWidthMinor">280dp</item>
+    </style>
+
+    <style name="Theme.Heavy.Dialog.Transparent" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@null</item>
+    </style>
+
 </resources>

@@ -32,7 +32,7 @@
             android:id="@+id/listingResults"
             android:layout_below="@id/searchEditText"
             android:layout_width="wrap_content"
-            android:textColor="@color/logo_yellow"
+            android:textColor="@color/sh_logo_yellow"
             android:layout_height="wrap_content"
             />
 
