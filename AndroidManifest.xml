@@ -40,6 +40,13 @@
             android:theme="@style/SmartHost"
             >
 
+
+        <provider
+                android:name="com.tyczj.extendedcalendarview.CalendarProvider"
+                android:permission="signature"
+                android:authorities="com.tyczj.extendedcalendarview.calendarprovider" />
+
+
         <activity android:name=".AppraiseActivity"
                   android:label="@string/app_name">
             <intent-filter>

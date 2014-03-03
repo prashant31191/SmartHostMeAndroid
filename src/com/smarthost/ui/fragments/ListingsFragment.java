@@ -82,11 +82,6 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
         gson = new Gson();
 
 
-
-
-
-
-
     }
 
     @Override

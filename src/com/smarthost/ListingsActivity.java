@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import com.smarthost.ui.adapters.ListingsPagerAdapter;
+import com.smarthost.ui.fragments.CalendarFragment;
 import com.smarthost.ui.fragments.ListingsFragment;
 
 /**
@@ -12,7 +13,9 @@ import com.smarthost.ui.fragments.ListingsFragment;
  * Date: 3/2/14
  * Time: 2:52 PM
  */
-public class ListingsActivity extends BaseActivity implements ListingsFragment.ListingsFragmentListener {
+public class ListingsActivity extends BaseActivity implements
+        ListingsFragment.ListingsFragmentListener,
+        CalendarFragment.CalendarFragmentListener{
 
     String title;
     private ListingsPagerAdapter pagerAdapter;
