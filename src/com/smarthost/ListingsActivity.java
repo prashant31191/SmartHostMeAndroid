@@ -3,6 +3,8 @@ package com.smarthost;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import com.smarthost.ui.adapters.ListingsPagerAdapter;
 import com.smarthost.ui.fragments.ListingsFragment;
 
 /**
@@ -11,10 +13,9 @@ import com.smarthost.ui.fragments.ListingsFragment;
  * Time: 2:52 PM
  */
 public class ListingsActivity extends BaseActivity implements ListingsFragment.ListingsFragmentListener {
-    @Override
-    public void buttonClicked() {
 
-    }
+    String title;
+    private ListingsPagerAdapter pagerAdapter;
 
     public static Intent getLaunchIntent(Context context) {
         Intent i = new Intent(context, ListingsActivity.class);
@@ -26,6 +27,24 @@ public class ListingsActivity extends BaseActivity implements ListingsFragment.L
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initViews("Listings", R.drawable.ic_launcher, ListingsFragment.newInstance());
+
+
+        title = getString(R.string.listings);
+
+
+        pagerAdapter = new ListingsPagerAdapter(getSupportFragmentManager(), this);
+        initViews(title, pagerAdapter);
+
     }
+
+
+
+
+
+    @Override
+    public void buttonClicked() {
+
+    }
+
+
 }

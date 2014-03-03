@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class Listing {
 
+    String searchQuery;
 
     @SerializedName("zipcode")
     String zipcode;
@@ -75,7 +76,7 @@ public class Listing {
 
 
 //    Might not need the tag...should be able to parse this like before?
-//    @SerializedName("amenities")
+    @SerializedName("amenities")
     ArrayList<String> amenities;
 
     /*

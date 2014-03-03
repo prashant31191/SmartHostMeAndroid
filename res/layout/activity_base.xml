@@ -22,7 +22,7 @@
                 android:layout_height="@dimen/one"
                 android:background="@android:color/holo_blue_bright" />
 
-        <co.touchlab.android.gymlitics.ui.widget.CustomViewPager
+        <com.smarthost.ui.widget.CustomViewPager
                 android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero"

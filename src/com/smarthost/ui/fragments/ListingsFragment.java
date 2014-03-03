@@ -141,9 +141,12 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
             EditText city = (EditText)getView().findViewById(R.id.searchEditText);
 
             TextView listingResults = (TextView)getView().findViewById(R.id.listingResults);
-            listingResults.setText("In " + city.getText().toString() + "you should list your place for about: " +total);
+            listingResults.setText("In " + city.getText().toString() + " you should list your place for about: " +total);
             listingResults.setVisibility(View.VISIBLE);
 
+            TextView amen = (TextView)getView().findViewById(R.id.amenities);
+
+            amen.setText(listings.get(0).getAmenities().get(1));
 
         }
 

@@ -11,6 +11,10 @@
     <string name="settings_stuff">Settings stuff</string>
     <string name="where_to_search">Where do you want to search?</string>
 
+    <string name="calendar">Calendar</string>
+    <string name="local">Local</string>
+
+
     <array name="amenitites">
 
         <item name="Wifi">Wifi</item>
