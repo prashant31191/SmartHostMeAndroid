@@ -11,4 +11,35 @@
     <string name="settings_stuff">Settings stuff</string>
     <string name="where_to_search">Where do you want to search?</string>
 
+    <array name="amenitites">
+
+        <item name="Wifi">Wifi</item>
+
+        <!--"Air Conditioning",-->
+        <!--"Breakfast",-->
+        <!--"Buzzer/Wireless Intercom",-->
+        <!--"Cable/Satellite",-->
+        <!--"Clothes Dryer",-->
+        <!--"Clothes Washer",-->
+        <!--"Doorman",-->
+        <!--"Elevator",-->
+        <!--"Family/Kid Friendly",-->
+        <!--"Gym",-->
+        <!--"Heating",-->
+        <!--"Hot Tub",-->
+        <!--"Internet",-->
+        <!--"Kitchen",-->
+        <!--"Parking",-->
+        <!--"Pets Allowed",-->
+        <!--"Pool",-->
+        <!--"Suitable For Events",-->
+        <!--"TV",-->
+        <!--"WiFi"-->
+
+
+
+    </array>
+
+
+
 </resources>
