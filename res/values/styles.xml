@@ -76,7 +76,7 @@
 
     <style name="SmartHost.TitleIndicator">
         <item name="android:background">@color/sh_white</item>
-        <item name="footerColor">@color/sh_red</item>
+        <item name="footerColor">@color/sh_logo_green</item>
         <item name="footerLineHeight">0dp</item>
         <item name="footerIndicatorHeight">@dimen/padding_tiny</item>
         <item name="footerIndicatorStyle">underline</item>
