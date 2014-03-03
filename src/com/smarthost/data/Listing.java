@@ -1,7 +1,9 @@
 package com.smarthost.data;
 
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,123 +11,108 @@ import java.util.ArrayList;
  * Date: 3/2/14
  * Time: 7:00 PM
  */
-public class Listing {
+public class Listing implements Serializable{
 
-    String searchQuery;
+
+
+    @DatabaseField(generatedId = true, unique = true)
+    public long db_id;
+
+    @DatabaseField
+    public String searchQuery;
 
     @SerializedName("zipcode")
-    String zipcode;
+    @DatabaseField
+    public String zipcode;
 
     @SerializedName("price")
-    int price;
+    @DatabaseField
+    public int price;
 
     @SerializedName("description")
-    String description;
+    @DatabaseField
+    public String description;
 
 
     @SerializedName("country")
-    String country;
+    @DatabaseField
+    public String country;
 
     @SerializedName("neighborhood")
-    String neighborhood;
+    @DatabaseField
+    public String neighborhood;
 
     @SerializedName("bedrooms")
-    int bedrooms;
+    @DatabaseField
+    public int bedrooms;
 
     @SerializedName("occupancy")
-    int occupancy;
+    @DatabaseField
+    public int occupancy;
 
     @SerializedName("city")
-    String city;
+    @DatabaseField
+    public String city;
 
     @SerializedName("name")
-    String name;
+    @DatabaseField
+    public String name;
 
     @SerializedName("link")
-    String link;
+    @DatabaseField
+    public String link;
 
     @SerializedName("room_type")
-    String room_type;
+    @DatabaseField
+    public String room_type;
 
     @SerializedName("property_type")
-    String property_type;
+    @DatabaseField
+    public String property_type;
 
     @SerializedName("addrees")
-    String addrees;
+    @DatabaseField
+    public String addrees;
 
     @SerializedName("beds")
-    int beds;
+    @DatabaseField
+    public int beds;
 
     @SerializedName("bathrooms")
-    int bathrooms;
+    @DatabaseField
+    public int bathrooms;
 
     @SerializedName("latitude")
-    String latitude;
+    @DatabaseField
+    public String latitude;
 
     @SerializedName("state")
-    String state;
+    @DatabaseField
+    public String state;
 
     @SerializedName("street_name")
-    String street_name;
+    @DatabaseField
+    public String street_name;
 
     @SerializedName("id")
-    String id;
+    @DatabaseField(unique = true)
+    public String api_id;
 
     @SerializedName("longitude")
-    String longitude;
+    @DatabaseField
+    public String longitude;
 
-
-//    Might not need the tag...should be able to parse this like before?
     @SerializedName("amenities")
-    ArrayList<String> amenities;
+    @DatabaseField
+    public String amenities;
 
-    /*
-     "zipcode": "19103",
-    "price": 500,
-    "description": "The Residences at The Ritz Carlton Philadelphia provides all of the legendary Ritz-Carlton amenities. ",
-    "country": "United States of America",
-    "neighborhood": "Rittenhouse",
-    "bedrooms": 2,
-    "occupancy": 4,
-    "city": "Philadelphia",
-    "name": "Residences at the Ritz Carlton",
-    "link": "http://airbnb.com/rooms/2115785",
-    "room_type": "Entire home/apt",
-    "property_type": "Apartment",
-    "addrees": "Market Street, Philadelphia, Pennsylvania 19103",
-    "beds": 2,
-    "bathrooms": 2,
-    "latitude": -75.16531582686208,
-    "state": "Pennsylvania",
-    "street_name": "Market Street",
-    "id": "air2115785",
-    "longitude": 39.951911922870686,
-    "amenities": [
-      "Air Conditioning",
-      "Breakfast",
-      "Buzzer/Wireless Intercom",
-      "Cable/Satellite",
-      "Clothes Dryer",
-      "Clothes Washer",
-      "Doorman",
-      "Elevator",
-      "Family/Kid Friendly",
-      "Gym",
-      "Heating",
-      "Hot Tub",
-      "Internet",
-      "Kitchen",
-      "Parking",
-      "Pets Allowed",
-      "Pool",
-      "Suitable For Events",
-      "TV",
-      "WiFi"
-    ]
-     */
+    public Listing(){
 
+    }
 
-    public Listing(String zipcode, int price, String description, String country, String neighborhood, int bedrooms, int occupancy, String city, String name, String link, String room_type, String property_type, String addrees, int beds, int bathrooms, String latitude, String state, String street_name, String id, String longitude, ArrayList<String> amenities) {
+    public Listing(long db_id, String searchQuery, String zipcode, int price, String description, String country, String neighborhood, int bedrooms, int occupancy, String city, String name, String link, String room_type, String property_type, String addrees, int beds, int bathrooms, String latitude, String state, String street_name, String api_id, String longitude, String amenities) {
+        this.db_id = db_id;
+        this.searchQuery = searchQuery;
         this.zipcode = zipcode;
         this.price = price;
         this.description = description;
@@ -144,7 +131,7 @@ public class Listing {
         this.latitude = latitude;
         this.state = state;
         this.street_name = street_name;
-        this.id = id;
+        this.api_id = api_id;
         this.longitude = longitude;
         this.amenities = amenities;
     }
@@ -293,14 +280,6 @@ public class Listing {
         this.street_name = street_name;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getLongitude() {
         return longitude;
     }
@@ -309,11 +288,36 @@ public class Listing {
         this.longitude = longitude;
     }
 
-    public ArrayList<String> getAmenities() {
+
+    public String getSearchQuery() {
+        return searchQuery;
+    }
+
+    public void setSearchQuery(String searchQuery) {
+        this.searchQuery = searchQuery;
+    }
+
+    public String getAmenities() {
         return amenities;
     }
 
-    public void setAmenities(ArrayList<String> amenities) {
+    public void setAmenities(String amenities) {
         this.amenities = amenities;
+    }
+
+    public long getId() {
+        return db_id;
+    }
+
+    public void setId(long id) {
+        this.db_id= id;
+    }
+
+    public String getApi_id() {
+        return api_id;
+    }
+
+    public void setApi_id(String api_id) {
+        this.api_id = api_id;
     }
 }

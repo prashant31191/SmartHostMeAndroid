@@ -25,8 +25,8 @@ import java.util.concurrent.Callable;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper
 {
     public final static String DATABASE_FILE_NAME = "smarthostdb";
-    private final static int BETA = 13;
-    private final static int CURRENT = 15;
+
+    private final static int CURRENT = 1;
 
     private Context mContext;
 
@@ -56,8 +56,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper
     // @reminder Ordering matters, create foreign key dependant classes later
     private final Class[] mTableClasses = new Class[]{
 
-//            Exercise.class
-
+            Listing.class
 
     };
 

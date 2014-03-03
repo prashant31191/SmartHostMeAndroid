@@ -6,12 +6,23 @@ import android.support.v4.content.LocalBroadcastManager;
 import co.touchlab.android.superbus.Command;
 import co.touchlab.android.superbus.PermanentException;
 import co.touchlab.android.superbus.TransientException;
+import com.smarthost.data.DatabaseHelper;
+import com.smarthost.data.Listing;
+import com.smarthost.loaders.BroadcastSender;
+import com.smarthost.network.DataHelper;
+import com.smarthost.network.ListingHelper;
+import com.smarthost.util.TLog;
 import com.turbomanage.httpclient.HttpResponse;
 import com.turbomanage.httpclient.ParameterMap;
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * User: davidredding
@@ -20,10 +31,8 @@ import java.sql.SQLException;
  */
 public class GetCityListingsCommand extends AbstractBaseNetworkCommand {
 
-    public static final String SUCCESSFUL_LISTINGS = "successful_listings";
-    public static final String LISTINGS = "listings";
-
     String address;
+
 
     public GetCityListingsCommand() {
         setPriority(MUCH_HIGHER_PRIORITY);
@@ -50,7 +59,7 @@ public class GetCityListingsCommand extends AbstractBaseNetworkCommand {
 
     @Override
     String getPath() {
-            return "listings/";
+        return "listings/";
     }
 
     @Override
@@ -65,12 +74,26 @@ public class GetCityListingsCommand extends AbstractBaseNetworkCommand {
     }
 
     @Override
-    void processResponse(HttpResponse response, Context context) throws SQLException, JSONException {
+    void processResponse(HttpResponse response, final Context context) throws SQLException, JSONException {
 
-        String text = response.getBodyAsString();
+        String jsonData = response.getBodyAsString();
 
-        Intent intent = new Intent().setAction(SUCCESSFUL_LISTINGS).putExtra(LISTINGS, text);
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+        final JSONArray json = new JSONArray(jsonData);
+
+        DatabaseHelper.getInstance(context).performDbTransactionOrThrowRuntime(new Callable<Void>()
+        {
+            @Override
+            public Void call() throws Exception
+            {
+
+                List<Listing> listings = ListingHelper.loadListings(context, json, address);
+
+                return null;
+            }
+        }, "Blah. We should dump these messages.  Stack trace is enough.");
+
+        BroadcastSender.makeListingBroadcast(context);
+
 
     }
 }
