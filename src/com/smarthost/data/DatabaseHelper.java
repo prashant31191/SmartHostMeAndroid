@@ -26,7 +26,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper
 {
     public final static String DATABASE_FILE_NAME = "smarthostdb";
 
-    private final static int CURRENT = 1;
+    private final static int CURRENT = 2;
 
     private Context mContext;
 

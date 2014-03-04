@@ -20,6 +20,7 @@ import android.widget.Toast;
 import co.touchlab.android.superbus.BusHelper;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import com.smarthost.ListingsActivity;
 import com.smarthost.R;
 import com.smarthost.data.AllListings;
 import com.smarthost.data.DataProcessor;
@@ -127,9 +128,9 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
     @Override
     public void onResume() {
         super.onResume();
-//        final IntentFilter filter = new IntentFilter();
-//        filter.addAction(GetCityListingsCommand.SUCCESSFUL_LISTINGS);
-//        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mReceiver, filter);
+        final IntentFilter filter = new IntentFilter();
+        filter.addAction(ListingsActivity.GOT_LOCATION);
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mReceiver, filter);
 
     }
 
@@ -137,55 +138,22 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
     @Override
     public void onPause() {
         super.onPause();
-//        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mReceiver);
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mReceiver);
 
     }
 
-//
-//    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
-//        @Override
-//        public void onReceive(Context context, final Intent intent) {
-//
-//
-//            String text = intent.getExtras().getString(GetCityListingsCommand.LISTINGS, "Broken link");
-//
-//            JsonReader reader = new JsonReader(new StringReader(text));
-//
-//            ArrayList<Listing> listings = new ArrayList<Listing>();
-//
-//            try {
-//                reader.beginArray();
-//                while (reader.hasNext()){
-//                  listings.add((Listing) gson.fromJson(reader, Listing.class));
-//                }
-//                reader.endArray();
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//
-//            int total = 0;
-//            for (Listing listing : listings) {
-//                total+= listing.getPrice();
-//            }
-//            total = total/listings.size();
-//
-//
-//            getView().findViewById(R.id.progressBar).setVisibility(View.GONE);
-//            EditText city = (EditText)getView().findViewById(R.id.searchEditText);
-//
-//            TextView listingResults = (TextView)getView().findViewById(R.id.listingResults);
-//            listingResults.setText("In " + city.getText().toString() + " you should list your place for about: " +total);
-//            listingResults.setVisibility(View.VISIBLE);
-//
-//            TextView amen = (TextView)getView().findViewById(R.id.amenities);
-//
-//            //amen.setText(listings.get(0).getAmenities().get(1));
-//
-//        }
-//
-//    };
+
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, final Intent intent) {
+
+
+            String address = intent.getExtras().getString(ListingsActivity.ADDRESS);
+            getListings(address.toLowerCase());
+
+        }
+
+    };
 
 
     @Override
@@ -200,10 +168,21 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
 
         if(listings!=null&&listings.size()>0){
 
+            int total = 0;
+            int numCounted = 0;
+            for (Listing listing : listings) {
+                if(listing.price>0){
+                    total+=listing.price;
+                    numCounted++;
+                }
+            }
+
+                 String avg = (total/numCounted)+"";
+
             getView().findViewById(R.id.progressBar).setVisibility(View.GONE);
 
             getView().findViewById(R.id.listingResults).setVisibility(View.VISIBLE);
-            ((TextView)getView().findViewById(R.id.listingResults)).setText(listings.get(0).getAmenities());
+            ((TextView)getView().findViewById(R.id.listingResults)).setText("The average price \nin this area is: \n"+avg);
         }
 
     }
@@ -220,19 +199,23 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
                 EditText searchCriteria = (EditText) getView().findViewById(R.id.searchEditText);
 
                 if(!TextUtils.isEmpty(searchCriteria.getText().toString())){
-                    searchQuery = searchCriteria.getText().toString().toLowerCase();
-                    loader.setSearchQuery(searchQuery);
-
-                    GetLocalListings deleteExerciseAsyncTask = new GetLocalListings(getActivity(), searchQuery);
-                    DataProcessor.runProcess(deleteExerciseAsyncTask);
-
-
-                    getView().findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+                    getListings(searchCriteria.getText().toString().toLowerCase());
                 }else{
                     Toast.makeText(getActivity(), "Please enter a loctation to search for.", Toast.LENGTH_SHORT).show();
                 }
 
         }
+    }
+
+    private void getListings(String searchCriteria) {
+        searchQuery = searchCriteria;
+        loader.setSearchQuery(searchQuery);
+
+        GetLocalListings deleteExerciseAsyncTask = new GetLocalListings(getActivity(), searchQuery);
+        DataProcessor.runProcess(deleteExerciseAsyncTask);
+
+
+        getView().findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
     }
 
 }

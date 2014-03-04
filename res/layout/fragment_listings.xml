@@ -33,6 +33,9 @@
             android:id="@+id/listingResults"
             android:layout_below="@id/searchEditText"
             android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textSize="@dimen/text_xxxlarge"
             android:textColor="@color/sh_logo_yellow"
             android:layout_height="wrap_content"
             />

@@ -95,7 +95,7 @@ public class Listing implements Serializable{
     public String street_name;
 
     @SerializedName("id")
-    @DatabaseField(unique = true)
+    @DatabaseField
     public String api_id;
 
     @SerializedName("longitude")
