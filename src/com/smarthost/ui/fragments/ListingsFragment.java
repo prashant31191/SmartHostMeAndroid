@@ -27,6 +27,7 @@ import com.smarthost.data.DataProcessor;
 import com.smarthost.data.Listing;
 import com.smarthost.loaders.ListingsLoader;
 import com.smarthost.network.asynctasks.GetLocalListings;
+import com.smarthost.superbus.AbstractBaseNetworkCommand;
 import com.smarthost.superbus.GetCityListingsCommand;
 import com.smarthost.util.TLog;
 import org.json.JSONArray;
@@ -130,6 +131,7 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
         super.onResume();
         final IntentFilter filter = new IntentFilter();
         filter.addAction(ListingsActivity.GOT_LOCATION);
+        filter.addAction(AbstractBaseNetworkCommand.FAILED_TO_PARSE);
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mReceiver, filter);
 
     }
@@ -154,8 +156,6 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
             }else{
                 showFailed();
             }
-
-
 
         }
 
@@ -214,6 +214,7 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
     }
 
     private void showFailed(){
+        getView().findViewById(R.id.listingResults).setVisibility(View.VISIBLE);
         getView().findViewById(R.id.progressBar).setVisibility(View.GONE);
         ((TextView)getView().findViewById(R.id.listingResults)).setText("There was an error getting the information.  Please try again later.");
     }
@@ -225,7 +226,7 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
         GetLocalListings getLocalListingsTask = new GetLocalListings(getActivity(), searchQuery);
         DataProcessor.runProcess(getLocalListingsTask);
 
-
+        getView().findViewById(R.id.listingResults).setVisibility(View.GONE);
         getView().findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
     }
 

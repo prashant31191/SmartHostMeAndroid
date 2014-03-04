@@ -23,7 +23,7 @@ import java.sql.SQLException;
  */
 public abstract class AbstractBaseNetworkCommand extends SqliteCommand {
 
-    private final String FAILED_TO_PARSE = "failed_to_parse";
+    public static String FAILED_TO_PARSE = "failed_to_parse";
 
     abstract String getPath();
 

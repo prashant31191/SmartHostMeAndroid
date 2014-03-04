@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_above="@+id/drawer_settings"
-            android:background="@android:color/holo_blue_bright" />
+            android:background="@color/blue_lettering" />
 
 
     <TextView
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:clickable="true"
-            android:textColor="@color/sh_logo_yellow"
+            android:textColor="@color/blue_lettering"
             android:focusable="true"
             android:onClick="onSettingsClick"
             android:text="@string/settings" />
