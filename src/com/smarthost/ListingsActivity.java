@@ -14,6 +14,8 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.smarthost.services.GPSTracker;
 import com.smarthost.ui.adapters.ListingsPagerAdapter;
 import com.smarthost.ui.fragments.CalendarFragment;
@@ -41,6 +43,8 @@ public class ListingsActivity extends BaseActivity implements
 
     public static String GOT_LOCATION = "got_location";
     public static String ADDRESS = "address";
+
+    private GoogleMap googleMap;
 
 
     private TextView gpsLocationView;
@@ -93,6 +97,7 @@ public class ListingsActivity extends BaseActivity implements
 
 
     }
+
 
 
     /* Class My Location Listener */

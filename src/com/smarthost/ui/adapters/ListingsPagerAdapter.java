@@ -23,7 +23,7 @@ public class ListingsPagerAdapter extends FragmentStatePagerAdapter {
 
     private static int LOCAL_FRAGMENT = 0;
     private static int CALENDAR_FRAGMENT = 1;
-    private static int MAP_FRAGMENT = 2;
+//    private static int MAP_FRAGMENT = 2;
 
 
     private final Context context;
@@ -44,16 +44,16 @@ public class ListingsPagerAdapter extends FragmentStatePagerAdapter {
         } else if(position == CALENDAR_FRAGMENT){
                 return CalendarFragment.newInstance();
         }
-        else if(position == MAP_FRAGMENT){
-            return new SHMapFragment();
-        }
+//        else if(position == MAP_FRAGMENT){
+//            return new SHMapFragment();
+//        }
 
         throw new RuntimeException();
     }
 
     @Override
     public int getCount(){
-        return 3;
+        return 2;
     }
 
     @Override
@@ -63,9 +63,9 @@ public class ListingsPagerAdapter extends FragmentStatePagerAdapter {
             return context.getString(R.string.local);
         }else if(position==CALENDAR_FRAGMENT){
             return context.getString(R.string.calendar);
-        }else if(position==MAP_FRAGMENT){
-            return context.getString(R.string.map);
-        }
+        }//else if(position==MAP_FRAGMENT){
+//            return context.getString(R.string.map);
+//        }
 
         Log.d("position: ", position + "");
 

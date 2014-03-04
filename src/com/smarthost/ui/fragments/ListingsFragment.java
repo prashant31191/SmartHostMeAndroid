@@ -211,8 +211,8 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
         searchQuery = searchCriteria;
         loader.setSearchQuery(searchQuery);
 
-        GetLocalListings deleteExerciseAsyncTask = new GetLocalListings(getActivity(), searchQuery);
-        DataProcessor.runProcess(deleteExerciseAsyncTask);
+        GetLocalListings getLocalListingsTask = new GetLocalListings(getActivity(), searchQuery);
+        DataProcessor.runProcess(getLocalListingsTask);
 
 
         getView().findViewById(R.id.progressBar).setVisibility(View.VISIBLE);

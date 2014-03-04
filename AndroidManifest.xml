@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.smarthost"
-          android:versionCode="07"
-          android:versionName="0.7">
+          android:versionCode="08"
+          android:versionName="0.8">
 
     <uses-sdk
-            android:minSdkVersion="14"
+            android:minSdkVersion="17"
             android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -58,6 +58,7 @@
 
         <activity android:name=".AppraiseActivity"/>
         <activity android:name=".SettingsActivity"/>
+        <activity android:name=".SHMapActivity"/>
 
 
         <!-- Superbus -->

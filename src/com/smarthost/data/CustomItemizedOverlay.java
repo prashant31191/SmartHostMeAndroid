@@ -1,11 +1,10 @@
 package com.smarthost.data;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.provider.ContactsContract;
-import com.google.android.maps.ItemizedOverlay;
-import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
+import com.google.android.maps.*;
 
 import java.util.ArrayList;
 
@@ -35,5 +34,23 @@ public class CustomItemizedOverlay extends ItemizedOverlay<OverlayItem> {
         return overlayItems.size();
     }
 
+    public void addOverlay(OverlayItem overlayItem){
+        overlayItems.add(overlayItem);
+        populate();
+    }
 
+
+    @Override
+    protected boolean onTap(int i) {
+
+        OverlayItem item = overlayItems.get(i);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        builder.setTitle(item.getTitle());
+        builder.setMessage(item.getSnippet());
+        builder.show();
+
+        return true;
+    }
 }

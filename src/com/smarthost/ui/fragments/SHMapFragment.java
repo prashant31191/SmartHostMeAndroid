@@ -54,6 +54,8 @@ public class SHMapFragment extends SupportMapFragment implements View.OnClickLis
         super.onCreate(savedInstanceState);
 
 
+        getMap();
+
     }
 
 //    @Override

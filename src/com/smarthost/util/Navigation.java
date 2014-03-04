@@ -4,6 +4,7 @@ import android.app.Activity;
 import com.smarthost.AppraiseActivity;
 import com.smarthost.ListingsActivity;
 import com.smarthost.R;
+import com.smarthost.SHMapActivity;
 
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Navigation {
 
     public static final int
             ID_LISTINGS= 0,
-            ID_APPRAISALS= ID_LISTINGS+ 1;
+            ID_MAP= ID_LISTINGS+ 1;
 
 
     public int id;
@@ -31,8 +32,8 @@ public class Navigation {
         for (int i = 0; i < COUNT; i++) {
             Navigation item = new Navigation(i);
             switch (item.id) {
-                case ID_APPRAISALS:
-                    item.title = R.string.appraisals;
+                case ID_MAP:
+                    item.title = R.string.map;
                     item.icon = R.drawable.ic_launcher;
                     break;
                 case ID_LISTINGS:
@@ -47,8 +48,8 @@ public class Navigation {
     }
 
     public static int getId(Activity activity) {
-        if (activity instanceof AppraiseActivity) {
-            return Navigation.ID_APPRAISALS;
+        if (activity instanceof SHMapActivity) {
+            return Navigation.ID_MAP;
         } else if (activity instanceof ListingsActivity) {
             return Navigation.ID_LISTINGS;
         }
