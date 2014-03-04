@@ -148,8 +148,14 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
         public void onReceive(Context context, final Intent intent) {
 
 
-            String address = intent.getExtras().getString(ListingsActivity.ADDRESS);
-            getListings(address.toLowerCase());
+            if(intent.hasExtra(ListingsActivity.ADDRESS)){
+                String address = intent.getExtras().getString(ListingsActivity.ADDRESS);
+                getListings(address.toLowerCase());
+            }else{
+                showFailed();
+            }
+
+
 
         }
 
@@ -205,6 +211,11 @@ public class ListingsFragment extends ListFragment implements View.OnClickListen
                 }
 
         }
+    }
+
+    private void showFailed(){
+        getView().findViewById(R.id.progressBar).setVisibility(View.GONE);
+        ((TextView)getView().findViewById(R.id.listingResults)).setText("There was an error getting the information.  Please try again later.");
     }
 
     private void getListings(String searchCriteria) {
