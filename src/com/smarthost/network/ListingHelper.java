@@ -54,12 +54,14 @@ public class ListingHelper {
                 dbListing.addrees= listing.addrees;
                 dbListing.beds= listing.beds;
                 dbListing.bathrooms= listing.bathrooms;
-                dbListing.latitude= listing.latitude;
+//                dbListing.latitude= listing.latitude;
+                dbListing.latitude= listing.longitude;
                 dbListing.state= listing.state;
                 dbListing.street_name= listing.street_name;
-                dbListing.longitude= listing.longitude;
+//                dbListing.longitude= listing.longitude;
+                dbListing.longitude= listing.latitude;
                 dbListing.amenities= listing.amenities;
-
+                dbListing.json = listing.json;
                 dbListing.searchQuery = query;
 
                 ListingQueries.save(c, dbListing);
@@ -93,8 +95,8 @@ public class ListingHelper {
 
         for (int i = 0, l = obj.length(); i < l; i++)
         {
-            JSONObject exerciseJSON = (JSONObject)obj.get(i);
-            Listing Listing = fillExerciseBaseInfo(exerciseJSON);
+            JSONObject listingJSON = (JSONObject)obj.get(i);
+            Listing Listing = fillListingBaseInfo(listingJSON);
 
             result.add(Listing);
         }
@@ -102,10 +104,11 @@ public class ListingHelper {
         return result;
     }
 
-    private static Listing fillExerciseBaseInfo(JSONObject listingJson) throws JSONException
+    private static Listing fillListingBaseInfo(JSONObject listingJson) throws JSONException
     {
         Listing listing = new Listing();
 
+        listing.json = listingJson.toString();
         listing.api_id = listingJson.getString("id");
         listing.zipcode = JSONHelper.getNullableString(listingJson, "zipcode");
         listing.price= JSONHelper.getNullableInteger(listingJson, "price");

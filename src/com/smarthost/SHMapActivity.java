@@ -4,6 +4,7 @@ package com.smarthost;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Camera;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
@@ -13,16 +14,16 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.*;
 import com.smarthost.data.DataProcessor;
 import com.smarthost.data.Listing;
 import com.smarthost.loaders.ListingsLoader;
 import com.smarthost.network.asynctasks.GetLocalListings;
 import com.smarthost.services.GPSTracker;
+import com.smarthost.ui.adapters.SHInfoWindowAdapter;
 
 import java.util.List;
 
@@ -31,7 +32,8 @@ import java.util.List;
  * Date: 3/3/14
  * Time: 11:17 PM
  */
-public class SHMapActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<List<Listing>> {
+public class SHMapActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<List<Listing>>,
+        GoogleMap.OnInfoWindowClickListener{
 
     public static Intent getLaunchIntent(Context context) {
         Intent i = new Intent(context, SHMapActivity.class);
@@ -63,7 +65,10 @@ public class SHMapActivity extends FragmentActivity implements LoaderManager.Loa
             googleMap.getUiSettings().setZoomGesturesEnabled(true);
             googleMap.getUiSettings().setZoomControlsEnabled(true);
             googleMap.setMyLocationEnabled(true);
+            googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
+            googleMap.setInfoWindowAdapter(new SHInfoWindowAdapter(getLayoutInflater()));
+            googleMap.setOnInfoWindowClickListener(this);
 //
 //            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(getResources().getString(R.string.app_name));
 //
@@ -84,6 +89,17 @@ public class SHMapActivity extends FragmentActivity implements LoaderManager.Loa
                 double latitude = gps.getLatitude();
                 double longitude = gps.getLongitude();
 
+                if(googleMap!=null){
+
+                    CameraPosition me = new CameraPosition.Builder().target(new LatLng(latitude, longitude))
+                            .zoom(10.5f)
+                            .bearing(0)
+                            .tilt(0)
+                            .build();
+
+                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(me), 1000, null);
+
+                }
                 // \n is for new line
                 Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
 
@@ -151,7 +167,7 @@ public class SHMapActivity extends FragmentActivity implements LoaderManager.Loa
 
             for (Listing listing : listings) {
                 if(!(TextUtils.isEmpty(listing.getLongitude())||TextUtils.isEmpty(listing.getLatitude()))){
-                    MarkerOptions marker = new MarkerOptions().position(new LatLng(Double.valueOf(listing.latitude), Double.valueOf(listing.longitude))).title(listing.latitude+", "+listing.longitude);
+                    MarkerOptions marker = new MarkerOptions().position(new LatLng(Double.valueOf(listing.latitude), Double.valueOf(listing.longitude))).title(listing.latitude+", "+listing.longitude).snippet(listing.json);
                     marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
                     googleMap.addMarker(marker);
                 }
@@ -166,5 +182,8 @@ public class SHMapActivity extends FragmentActivity implements LoaderManager.Loa
     }
 
 
+    @Override
+    public void onInfoWindowClick(Marker marker) {
 
+    }
 }

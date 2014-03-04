@@ -116,7 +116,7 @@ public class ListingsActivity extends BaseActivity implements
             String text=(addresses!=null)?"City : "+addresses.get(0).getSubLocality()+"\n Country : "+addresses.get(0).getCountryName():"Unknown Location";
 
             String locationValue = "My current location is: "+ text;
-            gpsLocationView.setText(locationValue);
+
 
             final Intent intent = new Intent(GOT_LOCATION).putExtra(ADDRESS, text);
             LocalBroadcastManager.getInstance(ListingsActivity.this).sendBroadcast(intent);

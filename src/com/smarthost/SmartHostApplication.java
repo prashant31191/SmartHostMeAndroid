@@ -14,6 +14,10 @@ import co.touchlab.ir.process.AppMonitorDefaultExceptionHandler;
 import co.touchlab.ir.util.ExceptionCallBack;
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GoogleAuthUtil;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.smarthost.data.DatabaseHelper;
 import com.smarthost.util.TLog;
 
@@ -70,6 +74,10 @@ public class SmartHostApplication extends StrictApplication implements Persisted
             }
             throw new RuntimeException(e);
         }
+
+        initImageLoader(getApplicationContext());
+
+
     }
 
     private void setupTouchTrack()
@@ -124,6 +132,23 @@ public class SmartHostApplication extends StrictApplication implements Persisted
         {
             return DatabaseHelper.getInstance(SmartHostApplication.this).getWritableDatabase();
         }
+    }
+
+
+    public static void initImageLoader(Context context) {
+        // This configuration tuning is custom. You can tune every option, you may tune some of them,
+        // or you can create default configuration by
+        //  ImageLoaderConfiguration.createDefault(this);
+        // method.
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+                .threadPriority(Thread.NORM_PRIORITY - 2)
+                .denyCacheImageMultipleSizesInMemory()
+                .discCacheFileNameGenerator(new Md5FileNameGenerator())
+                .tasksProcessingOrder(QueueProcessingType.LIFO)
+                        //.writeDebugLogs() // Remove for release app
+                .build();
+        // Initialize ImageLoader with configuration.
+        ImageLoader.getInstance().init(config);
     }
 
     @Override

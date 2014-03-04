@@ -106,11 +106,13 @@ public class Listing implements Serializable{
     @DatabaseField
     public String amenities;
 
+    public String json;
+
     public Listing(){
 
     }
 
-    public Listing(long db_id, String searchQuery, String zipcode, int price, String description, String country, String neighborhood, int bedrooms, int occupancy, String city, String name, String link, String room_type, String property_type, String addrees, int beds, int bathrooms, String latitude, String state, String street_name, String api_id, String longitude, String amenities) {
+    public Listing(long db_id, String searchQuery, String zipcode, int price, String description, String country, String neighborhood, int bedrooms, int occupancy, String city, String name, String link, String room_type, String property_type, String addrees, int beds, int bathrooms, String latitude, String state, String street_name, String api_id, String longitude, String amenities, String json) {
         this.db_id = db_id;
         this.searchQuery = searchQuery;
         this.zipcode = zipcode;
@@ -134,6 +136,23 @@ public class Listing implements Serializable{
         this.api_id = api_id;
         this.longitude = longitude;
         this.amenities = amenities;
+        this.json = json;
+    }
+
+    public long getDb_id() {
+        return db_id;
+    }
+
+    public void setDb_id(long db_id) {
+        this.db_id = db_id;
+    }
+
+    public String getJson() {
+        return json;
+    }
+
+    public void setJson(String json) {
+        this.json = json;
     }
 
     public String getZipcode() {
