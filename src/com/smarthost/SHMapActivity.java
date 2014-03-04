@@ -9,11 +9,15 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.smarthost.data.DataProcessor;
 import com.smarthost.data.Listing;
 import com.smarthost.loaders.ListingsLoader;
@@ -143,8 +147,15 @@ public class SHMapActivity extends FragmentActivity implements LoaderManager.Loa
 
         if(listings!=null&&listings.size()>0){
 
+            googleMap.clear();
 
-
+            for (Listing listing : listings) {
+                if(!(TextUtils.isEmpty(listing.getLongitude())||TextUtils.isEmpty(listing.getLatitude()))){
+                    MarkerOptions marker = new MarkerOptions().position(new LatLng(Double.valueOf(listing.latitude), Double.valueOf(listing.longitude))).title(listing.latitude+", "+listing.longitude);
+                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
+                    googleMap.addMarker(marker);
+                }
+            }
         }
 
     }

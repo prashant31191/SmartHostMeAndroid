@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.smarthost.AppraiseActivity;
 import com.smarthost.ListingsActivity;
+import com.smarthost.SHMapActivity;
 
 public class DrawerUtils {
 
@@ -16,8 +17,8 @@ public class DrawerUtils {
             public void run() {
                 Intent intent = null;
                 switch (which) {
-                    case Navigation.ID_APPRAISALS:
-                        intent = AppraiseActivity.getLaunchIntent(context);
+                    case Navigation.ID_MAP:
+                        intent = SHMapActivity.getLaunchIntent(context);
                         break;
 
                     case Navigation.ID_LISTINGS:

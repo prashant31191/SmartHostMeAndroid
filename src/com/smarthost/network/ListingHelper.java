@@ -124,7 +124,7 @@ public class ListingHelper {
         listing.beds= JSONHelper.getNullableInteger(listingJson, "beds");
         listing.bathrooms= JSONHelper.getNullableInteger(listingJson, "bathrooms");
 
-        listing.latitude= JSONHelper.getNullableString(listingJson, "latituce");
+        listing.latitude= JSONHelper.getNullableString(listingJson, "latitude");
         listing.state= JSONHelper.getNullableString(listingJson, "state");
         listing.street_name= JSONHelper.getNullableString(listingJson, "street_name");
         listing.longitude= JSONHelper.getNullableString(listingJson, "longitude");
