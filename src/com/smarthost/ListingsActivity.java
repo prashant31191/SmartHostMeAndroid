@@ -46,6 +46,9 @@ public class ListingsActivity extends BaseActivity implements
 
     private GoogleMap googleMap;
 
+    double latitude;
+    double longitude;
+
 
     private TextView gpsLocationView;
     private List<Address> addresses;
@@ -82,8 +85,8 @@ public class ListingsActivity extends BaseActivity implements
         // check if GPS enabled
         if(gps.canGetLocation()){
 
-            double latitude = gps.getLatitude();
-            double longitude = gps.getLongitude();
+            latitude = gps.getLatitude();
+            longitude = gps.getLongitude();
 
             // \n is for new line
             Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
@@ -95,31 +98,46 @@ public class ListingsActivity extends BaseActivity implements
             gps.showSettingsAlert();
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        gps.startUsingGPS();
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        gps.stopUsingGPS();
 
+    }
 
     /* Class My Location Listener */
     public class MyLocationListener implements LocationListener    {
 
         @Override
         public void onLocationChanged(Location loc){
-            loc.getLatitude();
-            loc.getLongitude();
-            Geocoder gcd = new Geocoder(getApplicationContext(), Locale.getDefault());
-            try {
-                addresses = gcd.getFromLocation(loc.getLatitude(),loc.getLongitude(), 1);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            String text=(addresses!=null)?"City : "+addresses.get(0).getSubLocality()+"\n Country : "+addresses.get(0).getCountryName():"Unknown Location";
-
-            String locationValue = "My current location is: "+ text;
-
-
-            final Intent intent = new Intent(GOT_LOCATION).putExtra(ADDRESS, text);
-            LocalBroadcastManager.getInstance(ListingsActivity.this).sendBroadcast(intent);
+//            double newLat = loc.getLatitude();
+//            double newLong = loc.getLongitude();
+//
+//            if(newLat-latitude<10)
+//
+//            Geocoder gcd = new Geocoder(getApplicationContext(), Locale.getDefault());
+//            try {
+//                addresses = gcd.getFromLocation(loc.getLatitude(),loc.getLongitude(), 1);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            String text=(addresses!=null)?"City : "+addresses.get(0).getSubLocality()+"\n Country : "+addresses.get(0).getCountryName():"Unknown Location";
+//
+//            String locationValue = "My current location is: "+ text;
+//
+//
+//            final Intent intent = new Intent(GOT_LOCATION).putExtra(ADDRESS, loc.getLatitude()+", "+loc.getLongitude());
+//            LocalBroadcastManager.getInstance(ListingsActivity.this).sendBroadcast(intent);
 
         }
 

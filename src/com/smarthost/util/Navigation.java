@@ -16,7 +16,8 @@ public class Navigation {
 
     public static final int
             ID_LISTINGS= 0,
-            ID_MAP= ID_LISTINGS+ 1;
+            ID_MAP= ID_LISTINGS+ 1,
+            ID_APPRAISALS= ID_MAP + 1;
 
 
     public int id;
@@ -40,7 +41,10 @@ public class Navigation {
                     item.title = R.string.listings;
                     item.icon = R.drawable.ic_launcher;
                     break;
-
+                case ID_APPRAISALS:
+                    item.title = R.string.appraisals;
+                    item.icon = R.drawable.ic_launcher;
+                    break;
             }
             items.add(item);
         }
@@ -52,6 +56,8 @@ public class Navigation {
             return Navigation.ID_MAP;
         } else if (activity instanceof ListingsActivity) {
             return Navigation.ID_LISTINGS;
+        } else if (activity instanceof AppraiseActivity) {
+            return Navigation.ID_APPRAISALS;
         }
         return -1;
     }

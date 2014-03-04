@@ -57,6 +57,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".FormActivity"/>
+
         <activity android:name=".AppraiseActivity"/>
         <activity android:name=".SettingsActivity"/>
         <activity android:name=".SHMapActivity"/>

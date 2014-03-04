@@ -116,23 +116,25 @@ public class GPSTracker extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location loc) {
 
-        List<Address> addresses = null;
+//        List<Address> addresses = null;
+//
+//        loc.getLatitude();
+//        loc.getLongitude();
+//        Geocoder gcd = new Geocoder(mContext, Locale.getDefault());
+//        try {
+//            addresses = gcd.getFromLocation(loc.getLatitude(),loc.getLongitude(), 1);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        String text=(addresses!=null)?"City : "+addresses.get(0).getSubLocality()+"\n Country : "+addresses.get(0).getCountryName():"Unknown Location";
 
-        loc.getLatitude();
-        loc.getLongitude();
-        Geocoder gcd = new Geocoder(mContext, Locale.getDefault());
-        try {
-            addresses = gcd.getFromLocation(loc.getLatitude(),loc.getLongitude(), 1);
-        } catch (IOException e) {
-            e.printStackTrace();
+        double newLat = loc.getLatitude();
+        double newLong = loc.getLongitude();
+
+        if((latitude-newLat>5||latitude-newLat<-5)||(longitude-newLong>5||longitude-newLong<-5)){
+            final Intent intent = new Intent(ListingsActivity.GOT_LOCATION).putExtra(ListingsActivity.ADDRESS, loc.getLatitude()+", "+loc.getLongitude() );
+            LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(intent);
         }
-        String text=(addresses!=null)?"City : "+addresses.get(0).getSubLocality()+"\n Country : "+addresses.get(0).getCountryName():"Unknown Location";
-
-        String locationValue = "My current location is: "+ text;
-
-
-        final Intent intent = new Intent(ListingsActivity.GOT_LOCATION).putExtra(ListingsActivity.ADDRESS, loc.getLatitude()+", "+loc.getLongitude() );
-        LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(intent);
 
     }
 
@@ -174,6 +176,13 @@ public class GPSTracker extends Service implements LocationListener {
         }
     }
 
+    public void startUsingGPS(){
+        if(locationManager != null){
+            getLocation();
+        }
+    }
+
+
     /**
      * Function to get longitude
      * */
@@ -193,6 +202,8 @@ public class GPSTracker extends Service implements LocationListener {
     public boolean canGetLocation() {
         return this.canGetLocation;
     }
+
+
 
     /**
      * Function to show settings alert dialog

@@ -1,5 +1,6 @@
 package com.smarthost;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +12,7 @@ import com.smarthost.ui.fragments.ListingsFragment;
  * Date: 3/2/14
  * Time: 2:53 PM
  */
-public class AppraiseActivity extends BaseActivity implements AppraiseFragment.AppraiseFragmentListener{
+public class AppraiseActivity extends Activity implements AppraiseFragment.AppraiseFragmentListener{
 
     public static Intent getLaunchIntent(Context context) {
         Intent i = new Intent(context, AppraiseActivity.class);
@@ -19,11 +20,18 @@ public class AppraiseActivity extends BaseActivity implements AppraiseFragment.A
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return i;
     }
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        initViews("Appraisals", R.drawable.ic_launcher, AppraiseFragment.newInstance());
+//    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initViews("Appraisals", R.drawable.ic_launcher, AppraiseFragment.newInstance());
+        setContentView(R.layout.activity_form);
     }
 
     @Override

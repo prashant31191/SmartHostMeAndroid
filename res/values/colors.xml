@@ -21,6 +21,12 @@
     <color name="sh_black">#FF111111</color>
     <color name="sh_black_alpha">#BF111111</color>
 
+    <color name="sh_gray_button_alpha">#AACCCCCC</color>
+
+    <color name="blue_lettering">#4fe2c7</color>
+    <color name="pinkBG">#E27C7F</color>
+
+
     <color name="sh_white">#FFEEEEEE</color>
     <color name="sh_white_alpha">#BFEEEEEE</color>
 

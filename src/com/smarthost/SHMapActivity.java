@@ -69,17 +69,6 @@ public class SHMapActivity extends FragmentActivity implements LoaderManager.Loa
 
             googleMap.setInfoWindowAdapter(new SHInfoWindowAdapter(getLayoutInflater()));
             googleMap.setOnInfoWindowClickListener(this);
-//
-//            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title(getResources().getString(R.string.app_name));
-//
-//            marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
-//
-//
-//            googleMap.addMarker(marker);
-
-//            CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(17.385044, 78.486671)).zoom(12).build();
-//            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
 
             gps = new GPSTracker(SHMapActivity.this);
 

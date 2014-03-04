@@ -15,7 +15,25 @@
     <string name="calendar">Calendar</string>
     <string name="local">Local</string>
 
+    <string name="location">Location</string>
+
+    <string name="aDay">A Day</string>
+
+    <string name="aMonth">A Month</string>
+    <string name="aYear">A Year</string>
+
+    <string name="privateRoom">PRIVATE ROOM</string>
+    <string name="entireHome">ENTRIRE HOME</string>
+    <string name="oneBedroom">1 Bedroom</string>
+    <string name="twoBedroom">2 Bedroom</string>
+    <string name="threeBedroom">3 Bedroom</string>
+
+
+    <string name="manhattan">120 Manhattan Ave</string>
+
     <string name="map">Map</string>
+    <string name="earningPotential">Earning Potential</string>
+
 
     <array name="amenitites">
 

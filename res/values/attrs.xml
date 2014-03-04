@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="AvenirEditText">
+        <attr name="typeface"/>
+    </declare-styleable>
+
+    <declare-styleable name="AvenirTextView">
+        <attr name="typeface"/>
+    </declare-styleable>
+
+    <declare-styleable name="AvenirButton">
+        <attr name="typeface"/>
+    </declare-styleable>
+
+    <declare-styleable name="AvenirRadioButton">
+        <attr name="typeface"/>
+    </declare-styleable>
+
+    <!-- Changing the attribute must be reflected in the AvenirTypefaceManager -->
+    <attr name="typeface" format="enum">
+        <enum name="avenir_regular" value="0"/>
+        <enum name="avenir_bold" value="1"/>
+    </attr>
+
+    <declare-styleable name="ImageSwitch">
+        <attr name="thumb" format="reference"/>
+        <attr name="track" format="reference"/>
+        <attr name="minWidth" format="dimension"/>
+    </declare-styleable>
+
+
+
+
+</resources>

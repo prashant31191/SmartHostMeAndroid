@@ -24,6 +24,9 @@ public class DrawerUtils {
                     case Navigation.ID_LISTINGS:
                         intent = ListingsActivity.getLaunchIntent(context);
                         break;
+                    case Navigation.ID_APPRAISALS:
+                        intent = AppraiseActivity.getLaunchIntent(context);
+                        break;
                 }
 
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
