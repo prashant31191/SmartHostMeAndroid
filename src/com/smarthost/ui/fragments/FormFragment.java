@@ -98,7 +98,7 @@ public class FormFragment extends Fragment implements View.OnClickListener{
         Button b2 = (Button) d.findViewById(R.id.button2);
         final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
         np.setMaxValue(8);
-        np.setMinValue(0);
+        np.setMinValue(1);
         np.setValue(value==R.id.bedrooms ? Integer.parseInt(numBedrooms.getText().toString()) : Integer.parseInt(numBathrooms.getText().toString()));
         np.setWrapSelectorWheel(false);
         //np.setOnValueChangedListener(this);

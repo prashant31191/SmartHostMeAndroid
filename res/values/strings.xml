@@ -44,7 +44,7 @@
     <string name="manhattan">120 Manhattan Ave</string>
 
     <string name="map">Map</string>
-    <string name="earningPotential">EARNING POTENTIAL</string>
+    <string name="earningPotential">RECOMMENDED PRICE</string>
 
 
     <array name="amenitites">
