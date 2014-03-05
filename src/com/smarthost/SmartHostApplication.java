@@ -95,8 +95,8 @@ public class SmartHostApplication extends StrictApplication implements Persisted
     {
         AppPreferences appPreferences = AppPreferences.getInstance(context);
         List<IssueParam> params = new ArrayList<IssueParam>();
-        params.add(new IssueParam("Google Account", appPreferences.getAccountEmail()));
-        params.add(new IssueParam("UUID", appPreferences.getUuid()));
+//        params.add(new IssueParam("Google Account", appPreferences.getAccountEmail()));
+//        params.add(new IssueParam("UUID", appPreferences.getUuid()));
         return params;
     }
 

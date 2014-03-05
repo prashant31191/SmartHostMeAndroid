@@ -19,7 +19,7 @@
         <TextView
                 android:id="@+id/bedrooms"
                 android:layout_width="wrap_content"
-                android:text="@string/bedrooms"
+                android:text="@string/people"
                 android:drawableTop="@drawable/bed_icon"
                 android:layout_height="wrap_content"/>
 

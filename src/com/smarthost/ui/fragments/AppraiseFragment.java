@@ -21,6 +21,7 @@ import android.widget.*;
 import co.touchlab.android.superbus.BusHelper;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
+import com.smarthost.AppPreferences;
 import com.smarthost.ListingsActivity;
 import com.smarthost.R;
 import com.smarthost.data.Listing;
@@ -30,6 +31,7 @@ import com.smarthost.superbus.GetPriceForAddressCommand;
 import com.smarthost.ui.adapters.AppraiseFormFragmentPagerAdapter;
 import com.viewpagerindicator.LinePageIndicator;
 import org.apache.commons.lang3.StringUtils;
+import org.w3c.dom.Text;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
@@ -111,7 +113,7 @@ public class AppraiseFragment extends Fragment implements
 
 
     public void updateBedrooms(int number){
-        formListing.bedrooms = number;
+        formListing.occupancy = number;
         getListing();
     }
     public void updateBathrooms(int number){
@@ -162,7 +164,7 @@ public class AppraiseFragment extends Fragment implements
     // 1 bathroom
 
 
-        @Override
+    @Override
     public void onResume() {
         super.onResume();
         final IntentFilter filter = new IntentFilter();
@@ -200,13 +202,16 @@ public class AppraiseFragment extends Fragment implements
     private void initViews() {
         Log.d(TAG, "initViews");
 
+
+
         View parent = ((ViewGroup)getView()).getChildAt(0);
 
         searchButton = (TextView) parent.findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getListing();
+                if(!TextUtils.isEmpty(searchEditText.getText().toString()))
+                    getListing();
             }
         });
 
@@ -219,19 +224,22 @@ public class AppraiseFragment extends Fragment implements
                                 actionId == EditorInfo.IME_ACTION_DONE ||
                                 event.getAction() == KeyEvent.ACTION_DOWN &&
                                         event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                            formListing.addrees = searchEditText.getText().toString();
-                            getListing();
+                            if(!TextUtils.isEmpty(searchEditText.getText().toString())){
+                                formListing.addrees = searchEditText.getText().toString();
+                                AppPreferences.getInstance(getActivity()).setAddress(formListing.addrees);
+                                getListing();
+                            }
                             return false;
                         }
                         return false;
                     }
                 });
 
-        searchEditText.setText("Brooklyn NY");
-        formListing.bedrooms = 3;
-        formListing.bathrooms = 1;
-        formListing.occupancy = 2;
-        formListing.addrees = searchEditText.getText().toString();
+        searchEditText.setText(AppPreferences.getInstance(getActivity()).getAddress());
+        formListing.bedrooms = AppPreferences.getInstance(getActivity()).getBedrooms();
+        formListing.bathrooms = AppPreferences.getInstance(getActivity()).getBathrooms();
+        formListing.occupancy = AppPreferences.getInstance(getActivity()).getOccupancy();
+        formListing.addrees = AppPreferences.getInstance(getActivity()).getAddress();
 
         actualAmount = (TextView) parent.findViewById(R.id.actualAmount);
         actualAmount.setText("");

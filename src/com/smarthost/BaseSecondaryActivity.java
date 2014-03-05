@@ -201,7 +201,8 @@ public class BaseSecondaryActivity extends BaseTrackerActivity {
      */
     protected void onDrawerItemClick(final int which) {
 
-        Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show();
+        if(which!=Navigation.ID_APPRAISALS)
+            Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show();
         closeDrawer();
         return;
 
@@ -216,17 +217,18 @@ public class BaseSecondaryActivity extends BaseTrackerActivity {
      * @param target The view clicked.
      */
     public void onSettingsClick(View target) {
-        closeDrawer();
-        Toast.makeText(this, "Comings Soon", Toast.LENGTH_SHORT).show();
+//        closeDrawer();
+//        Toast.makeText(this, "Comings Soon", Toast.LENGTH_SHORT).show();
 //        // Use a pending runnable to avoid janky drawer animations.
-//        mPendingLaunch = new Runnable() {
-//            @Override
-//            public void run() {
-//                Intent intent = SettingsActivity.getLaunchIntent(BaseSecondaryActivity.this);
-//                startActivity(intent);
-//                overridePendingTransition(0, 0);
-//            }
-//        };
+        mPendingLaunch = new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = SettingsActivity.getLaunchIntent(BaseSecondaryActivity.this);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        };
+        closeDrawer();
     }
 
     protected void closeDrawer() {

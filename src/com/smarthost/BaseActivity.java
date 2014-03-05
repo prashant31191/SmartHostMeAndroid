@@ -293,10 +293,11 @@ public class BaseActivity extends BaseTrackerActivity {
      */
     public void onSettingsClick(View target) {
 
-        Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show();
+
+        Intent intent = SettingsActivity.getLaunchIntent(BaseActivity.this);
+        startActivity(intent);
         mDrawerLayout.closeDrawer(mDrawerView);
-//        Intent intent = SettingsActivity.getLaunchIntent(BaseActivity.this);
-//        startActivity(intent);
     }
 
     protected void setActionBarItemsAlpha(float delta) {

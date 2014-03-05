@@ -3,6 +3,7 @@ package com.smarthost.util;
 import android.app.Activity;
 import android.content.Intent;
 
+import android.widget.Toast;
 import com.smarthost.AppraiseActivity;
 import com.smarthost.ListingsActivity;
 import com.smarthost.SHMapActivity;
@@ -18,20 +19,21 @@ public class DrawerUtils {
                 Intent intent = null;
                 switch (which) {
                     case Navigation.ID_MAP:
-                        intent = SHMapActivity.getLaunchIntent(context);
 
-                        context.startActivity(intent);
+                        Toast.makeText(context, "Coming Soon!", Toast.LENGTH_SHORT).show();
+//                        intent = SHMapActivity.getLaunchIntent(context);
+//                        context.startActivity(intent);
                         break;
 
                     case Navigation.ID_LISTINGS:
 
-
-                        intent = ListingsActivity.getLaunchIntent(context);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
-
-                        context.finish();
+                        Toast.makeText(context, "Coming Soon!", Toast.LENGTH_SHORT).show();
+//                        intent = ListingsActivity.getLaunchIntent(context);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        context.startActivity(intent);
+//
+//                        context.finish();
                         break;
                     case Navigation.ID_APPRAISALS:
 

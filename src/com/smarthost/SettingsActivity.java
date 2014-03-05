@@ -11,7 +11,7 @@ import com.smarthost.ui.fragments.SettingsFragment;
  * Date: 3/2/14
  * Time: 3:04 PM
  */
-public class SettingsActivity extends BaseActivity implements SettingsFragment.SettingsFragmentListener{
+public class SettingsActivity extends BaseActivity {
 
     public static Intent getLaunchIntent(Context context) {
         Intent i = new Intent(context, SettingsActivity.class);
@@ -26,8 +26,5 @@ public class SettingsActivity extends BaseActivity implements SettingsFragment.S
         initViews("Settings", R.drawable.ic_launcher, SettingsFragment.newInstance());
     }
 
-    @Override
-    public void buttonClicked() {
 
-    }
 }

@@ -8,8 +8,63 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/sh_logo_yellow"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_huge"
             android:text="@string/settings"/>
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/yourAddress"/>
+
+    <EditText
+            android:id="@+id/addressEdittext"
+            android:layout_width="match_parent"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:layout_height="wrap_content"/>
+
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/yourPlace"/>
+
+    <Switch
+            android:id="@+id/entireHomeSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/yourBathrooms"/>
+
+    <EditText
+            android:id="@+id/bathroomsEdittext"
+            android:layout_width="match_parent"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="1"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/yourOccupancy"/>
+
+    <EditText
+            android:id="@+id/occupancyEdittext"
+            android:layout_width="match_parent"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="1"
+            android:layout_height="wrap_content"/>
 
 </LinearLayout>

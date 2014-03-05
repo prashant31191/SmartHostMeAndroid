@@ -17,6 +17,14 @@
 
     <string name="location">Location</string>
 
+    <string name="yourAddress">Your Address</string>
+    <string name="yourPlace">Is your listing the entire house?</string>
+    <string name="yourOccupancy">Your occupancy</string>
+    <string name="yourBathrooms">Your # of bathrooms</string>
+
+
+
+
     <string name="aDay">A Day</string>
 
     <string name="aMonth">A Month</string>
@@ -30,6 +38,7 @@
 
     <string name="accommodates">Accommodates</string>
     <string name="bedrooms">Bedrooms</string>
+    <string name="people">People</string>
     <string name="bathrooms">Bathrooms</string>
 
     <string name="manhattan">120 Manhattan Ave</string>

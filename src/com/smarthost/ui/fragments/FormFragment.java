@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import com.smarthost.AppPreferences;
+import com.smarthost.AppraiseActivity;
 import com.smarthost.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -105,12 +107,12 @@ public class FormFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onClick(View v) {
                 switch (value){
-                    case R.id.bedrooms:
+                    case R.id.bedroomHolder:
                         numBedrooms.setText(String.valueOf(np.getValue()));
                         listener.updateBedrooms(np.getValue());
 
                         break;
-                    case R.id.bathrooms:
+                    case R.id.bathroomHolder:
                         numBathrooms.setText(String.valueOf(np.getValue()));
                         listener.updateBathrooms(np.getValue());
                         break;
@@ -145,16 +147,33 @@ public class FormFragment extends Fragment implements View.OnClickListener{
 
             case R.layout.fragment_form_rooms:
 
-                getView().findViewById(R.id.privateButton).setOnClickListener(this);
-                getView().findViewById(R.id.entireHomeButton).setOnClickListener(this);
+                TextView privateButton = (TextView) getView().findViewById(R.id.privateButton);
+                privateButton.setOnClickListener(this);
+                TextView entireHome= (TextView) getView().findViewById(R.id.entireHomeButton);
+                entireHome.setOnClickListener(this);
 
+                if(AppPreferences.getInstance(getActivity()).getPrivateRoom()){
+                    privateButton.setTextColor(getActivity().getResources().getColor(R.color.blue_lettering));
+                    privateButton.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.blue_door), null, null);
+                    entireHome.setTextColor(getActivity().getResources().getColor(R.color.sh_gray));
+                    entireHome.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.gray_house), null, null);
+                }else{
+                    privateButton.setTextColor(getActivity().getResources().getColor(R.color.sh_gray));
+                    privateButton.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.gray_door), null, null);
+                    entireHome.setTextColor(getActivity().getResources().getColor(R.color.blue_lettering));
+                    entireHome.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.blue_house), null, null);
+                }
 
                 break;
             case R.layout.fragment_form_sleeping:
                 numBathrooms = (TextView)getView().findViewById(R.id.numBathrooms);
                 numBedrooms = (TextView)getView().findViewById(R.id.numBedrooms);
-                getView().findViewById(R.id.bedrooms).setOnClickListener(this);
-                getView().findViewById(R.id.bathrooms).setOnClickListener(this);
+
+                getView().findViewById(R.id.bathroomHolder).setOnClickListener(this);
+                getView().findViewById(R.id.bedroomHolder).setOnClickListener(this);
+
+                numBathrooms.setText(AppPreferences.getInstance(getActivity()).getBathrooms()+"");
+                numBedrooms.setText(AppPreferences.getInstance(getActivity()).getOccupancy()+"");
 
                 break;
 
@@ -178,15 +197,15 @@ public class FormFragment extends Fragment implements View.OnClickListener{
         TextView entireHome = (TextView) getView().findViewById(R.id.entireHomeButton);
 
         switch (v.getId()){
-            case R.id.bedrooms:
+            case R.id.bedroomHolder:
 
-                value = R.id.bedrooms;
+                value = R.id.bedroomHolder;
                 show();
 
                 break;
-            case R.id.bathrooms:
+            case R.id.bathroomHolder:
 
-                value = R.id.bathrooms;
+                value = R.id.bathroomHolder;
                 show();
 
                 break;
