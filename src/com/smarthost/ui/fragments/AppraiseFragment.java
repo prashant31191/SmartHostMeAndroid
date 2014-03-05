@@ -1,13 +1,16 @@
 package com.smarthost.ui.fragments;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,8 +21,10 @@ import android.widget.*;
 import co.touchlab.android.superbus.BusHelper;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
+import com.smarthost.ListingsActivity;
 import com.smarthost.R;
 import com.smarthost.data.Listing;
+import com.smarthost.superbus.AbstractBaseNetworkCommand;
 import com.smarthost.superbus.GetCityListingsCommand;
 import com.smarthost.superbus.GetPriceForAddressCommand;
 import com.smarthost.ui.adapters.AppraiseFormFragmentPagerAdapter;
@@ -28,6 +33,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -60,6 +66,8 @@ public class AppraiseFragment extends Fragment implements
     EditText searchEditText;
 
     Listing formListing = new Listing();
+    boolean entireHome = true;
+    boolean privateRoom = false;
 
     public interface AppraiseFragmentListener{
 
@@ -101,20 +109,92 @@ public class AppraiseFragment extends Fragment implements
     }
 
 
-    public void updateListing() {
-        if(actualAmount!=null ){
-            actualAmount.setText(((int)(Math.random() * 999)+100)+"");
-        }
+
+    public void updateBedrooms(int number){
+        formListing.bedrooms = number;
+        getListing();
+    }
+    public void updateBathrooms(int number){
+        formListing.bathrooms= number;
+        getListing();
+    }
+    public void updateHomeOrPrivate(boolean home, boolean private_Room){
+        entireHome = home;
+        privateRoom = private_Room;
+        getListing();
+    }
 
 
 
-//        formListing.addrees = "Philadelphia, Pa";
-//        formListing.bedrooms = 1;
-//        formListing.bathrooms = 1;
-//        formListing.occupancy = 2;
-//        BusHelper.submitCommandAsync(getActivity(), new GetCityListingsCommand("Philadelphia, Pa"));
+    public void getListing() {
+//        if(actualAmount!=null ){
+//            actualAmount.setText(((int)(Math.random() * 999)+100)+"");
+//        }
+
+        actualAmount.setVisibility(View.GONE);
+        if(getView().findViewById(R.id.progressBar)!=null)
+            getView().findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+
+
+        BusHelper.submitCommandAsync(getActivity(), new GetPriceForAddressCommand(formListing, entireHome, privateRoom));
+
 
     }
+
+
+    public void updateListing(String value) {
+        double amount = Double.parseDouble(value);
+        DecimalFormat formatter = new DecimalFormat("##,###");
+
+        if(getView().findViewById(R.id.progressBar)!=null)
+            getView().findViewById(R.id.progressBar).setVisibility(View.GONE);
+
+        if(actualAmount!=null ){
+            actualAmount.setText(formatter.format(amount));
+        }
+        actualAmount.setVisibility(View.VISIBLE);
+
+
+    }
+
+    // 11 Meserole Street Brooklyn NY 11206
+    // 3 bedroom full apt
+    // 1 bathroom
+
+
+        @Override
+    public void onResume() {
+        super.onResume();
+        final IntentFilter filter = new IntentFilter();
+        filter.addAction(GetPriceForAddressCommand.GOT_PRICE);
+        filter.addAction(AbstractBaseNetworkCommand.FAILED_TO_PARSE);
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mReceiver, filter);
+
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mReceiver);
+
+    }
+
+
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, final Intent intent) {
+
+            if(intent.hasExtra(GetPriceForAddressCommand.PRICE)){
+                String value = intent.getExtras().getString(GetPriceForAddressCommand.PRICE);
+                updateListing(value);
+            }else{
+                new BadCallToServerDialogFragment(getActivity()).show(getChildFragmentManager(), "MyDialog");
+            }
+
+        }
+
+    };
 
 
     private void initViews() {
@@ -126,7 +206,7 @@ public class AppraiseFragment extends Fragment implements
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateListing();
+                getListing();
             }
         });
 
@@ -139,17 +219,24 @@ public class AppraiseFragment extends Fragment implements
                                 actionId == EditorInfo.IME_ACTION_DONE ||
                                 event.getAction() == KeyEvent.ACTION_DOWN &&
                                         event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                            updateListing();
+                            formListing.addrees = searchEditText.getText().toString();
+                            getListing();
                             return false;
                         }
                         return false;
                     }
                 });
 
+        searchEditText.setText("Brooklyn NY");
+        formListing.bedrooms = 3;
+        formListing.bathrooms = 1;
+        formListing.occupancy = 2;
+        formListing.addrees = searchEditText.getText().toString();
+
         actualAmount = (TextView) parent.findViewById(R.id.actualAmount);
         actualAmount.setText("");
 
-        updateListing();
+        getListing();
 
         mPager = (ViewPager) parent.findViewById(R.id.formpager);
         indicator = (LinePageIndicator)parent.findViewById(R.id.indicator);

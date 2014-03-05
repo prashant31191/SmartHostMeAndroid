@@ -32,7 +32,7 @@ public class DataHelper
 //    public static final String LOCALHOST  = "localhost:5000/api/";
 
 //    public static final String LOCALHOST  = "http://www.smarthost.me/api/";
-    public static final String LOCALHOST  = "http://www.smarthost.me/api/1.0";
+    public static final String LOCALHOST  = "http://www.smarthost.me/api/1.0/";
 
     interface RunOp
     {

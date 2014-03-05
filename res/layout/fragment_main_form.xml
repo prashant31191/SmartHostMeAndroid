@@ -68,7 +68,7 @@
             <RelativeLayout
                     android:id="@+id/numberHolder"
                     android:layout_width="match_parent"
-                    android:background="@color/pinkBG"
+                    android:background="@color/sh_yellow"
                     android:layout_centerHorizontal="true"
                     android:paddingBottom="20dp"
                     android:paddingTop="20dp"
@@ -87,7 +87,7 @@
                             android:id="@+id/whiteLogo"
                             android:layout_width="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:src="@drawable/white_logo"
+                            android:src="@drawable/dark_logo"
                             android:layout_marginRight="20dp"
                             android:layout_height="wrap_content"/>
 
@@ -95,7 +95,7 @@
                             android:id="@+id/actualAmount"
                             android:layout_width="wrap_content"
                             android:text="239"
-                            android:textColor="@color/white"
+                            android:textColor="@color/sh_dark_lettering"
                             android:layout_gravity="center_vertical"
                             android:textSize="@dimen/text_huge"
                             android:layout_toRightOf="@id/whiteLogo"
@@ -106,6 +106,8 @@
                             android:layout_width="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:visibility="gone"
+
+                            android:padding="6dp"
                             android:layout_height="wrap_content"/>
 
                 </LinearLayout>
@@ -117,7 +119,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_centerHorizontal="true"
                         android:textSize="@dimen/text_large"
-                        android:textColor="@color/white"
+                        android:textColor="@color/sh_dark_lettering"
                         android:layout_height="wrap_content"/>
 
             </RelativeLayout>
@@ -129,40 +131,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-
                 <com.smarthost.ui.views.avenir.AvenirTextView
-                        android:id="@+id/day"
+                        android:id="@+id/date"
                         android:textColor="@color/blue_lettering"
-                        android:layout_width="wrap_content"
-                        android:text="@string/aDay"
-                        android:gravity="center_horizontal"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:background="@color/sh_white_button_alpha"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
-
-                <com.smarthost.ui.views.avenir.AvenirTextView
-                        android:id="@+id/month"
-                        android:textColor="@color/blue_lettering"
-                        android:layout_width="wrap_content"
-                        android:layout_marginLeft="-10dp"
-                        android:gravity="center_horizontal"
-                        android:layout_weight="1"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:background="@color/sh_white_button_alpha"
-                        android:text="@string/aMonth"
-                        android:layout_height="wrap_content"/>
-
-                <com.smarthost.ui.views.avenir.AvenirTextView
-                        android:id="@+id/year"
-                        android:textColor="@color/blue_lettering"
-                        android:layout_width="wrap_content"
-                        android:layout_marginLeft="-10dp"
+                        android:layout_width="match_parent"
                         android:background="@color/sh_white_button_alpha"
                         android:text="@string/aYear"
-                        android:gravity="center_horizontal"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        android:ellipsize="end"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:layout_weight="1"
@@ -178,7 +156,7 @@
 
     <View
             android:id="@+id/horizontalBar"
-            android:background="@color/pinkBG"
+            android:background="@color/sh_yellow"
             android:layout_width="match_parent"
             android:layout_below="@+id/topView"
             android:layout_weight="1"

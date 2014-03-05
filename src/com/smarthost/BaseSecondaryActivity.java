@@ -204,8 +204,8 @@ public class BaseSecondaryActivity extends BaseTrackerActivity {
         Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show();
         closeDrawer();
         return;
+
 //        mPendingLaunch = DrawerUtils.buildLaunchRunnable(this, which);
-//
 //        mDrawerList.setItemChecked(which, true);
 //        closeDrawer();
     }

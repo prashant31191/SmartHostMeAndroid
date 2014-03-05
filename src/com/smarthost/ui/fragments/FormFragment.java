@@ -36,8 +36,10 @@ public class FormFragment extends Fragment implements View.OnClickListener{
     private FormFragmentListener listener;
 
     public interface FormFragmentListener{
+        void updateBedrooms(int number);
+        void updateBathrooms(int number);
+        void updateHomeOrPrivate(boolean home, boolean private_Room);
 
-        void updateListing();
     }
 
 
@@ -93,8 +95,9 @@ public class FormFragment extends Fragment implements View.OnClickListener{
         Button b1 = (Button) d.findViewById(R.id.button1);
         Button b2 = (Button) d.findViewById(R.id.button2);
         final NumberPicker np = (NumberPicker) d.findViewById(R.id.numberPicker1);
-        np.setMaxValue(100);
+        np.setMaxValue(8);
         np.setMinValue(0);
+        np.setValue(value==R.id.bedrooms ? Integer.parseInt(numBedrooms.getText().toString()) : Integer.parseInt(numBathrooms.getText().toString()));
         np.setWrapSelectorWheel(false);
         //np.setOnValueChangedListener(this);
         b1.setOnClickListener(new View.OnClickListener()
@@ -104,11 +107,12 @@ public class FormFragment extends Fragment implements View.OnClickListener{
                 switch (value){
                     case R.id.bedrooms:
                         numBedrooms.setText(String.valueOf(np.getValue()));
-                        listener.updateListing();
+                        listener.updateBedrooms(np.getValue());
+
                         break;
                     case R.id.bathrooms:
                         numBathrooms.setText(String.valueOf(np.getValue()));
-                        listener.updateListing();
+                        listener.updateBathrooms(np.getValue());
                         break;
 
                 }
@@ -199,11 +203,11 @@ public class FormFragment extends Fragment implements View.OnClickListener{
                     privateButton.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.blue_door), null, null);
                     entireHome.setTextColor(getActivity().getResources().getColor(R.color.sh_gray));
                     entireHome.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.gray_house), null, null);
-                    listener.updateListing();
+
 
                 }
 
-
+                listener.updateHomeOrPrivate(false, true);
                 break;
             case R.id.entireHomeButton:
 
@@ -218,8 +222,8 @@ public class FormFragment extends Fragment implements View.OnClickListener{
                     privateButton.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.gray_door), null, null);
                     entireHome.setTextColor(getActivity().getResources().getColor(R.color.blue_lettering));
                     entireHome.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.blue_house), null, null);
-                    listener.updateListing();
                 }
+                listener.updateHomeOrPrivate(true, false);
 
 
                 break;

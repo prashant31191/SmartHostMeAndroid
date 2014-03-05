@@ -20,14 +20,14 @@
                 android:id="@+id/bedrooms"
                 android:layout_width="wrap_content"
                 android:text="@string/bedrooms"
-                android:drawableTop="@drawable/blue_house"
+                android:drawableTop="@drawable/bed_icon"
                 android:layout_height="wrap_content"/>
 
         <TextView
                 android:id="@+id/numBedrooms"
                 android:padding="10dp"
                 android:textSize="@dimen/text_xxxlarge"
-                android:text="0"
+                android:text="3"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:textColor="@color/blue_lettering"
@@ -48,7 +48,7 @@
                 android:id="@+id/bathrooms"
                 android:layout_width="wrap_content"
                 android:text="@string/bathrooms"
-                android:drawableTop="@drawable/blue_door"
+                android:drawableTop="@drawable/restroom_icon"
                 android:layout_height="wrap_content"/>
 
         <TextView
@@ -58,7 +58,7 @@
                 android:textSize="@dimen/text_xxxlarge"
                 android:padding="10dp"
                 android:layout_gravity="center_horizontal"
-                android:text="0"
+                android:text="1"
                 android:layout_height="wrap_content"/>
 
     </LinearLayout>

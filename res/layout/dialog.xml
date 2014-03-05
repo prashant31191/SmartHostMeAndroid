@@ -10,7 +10,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="64dp" />
+            android:layout_marginTop="20dp" />
 
     <Button
             android:id="@+id/button2"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/numberPicker1"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="98dp"
+            android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/numberPicker1"
             android:text="Cancel" />
 

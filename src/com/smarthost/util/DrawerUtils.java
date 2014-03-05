@@ -19,21 +19,32 @@ public class DrawerUtils {
                 switch (which) {
                     case Navigation.ID_MAP:
                         intent = SHMapActivity.getLaunchIntent(context);
+
+                        context.startActivity(intent);
                         break;
 
                     case Navigation.ID_LISTINGS:
+
+
                         intent = ListingsActivity.getLaunchIntent(context);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+
+                        context.finish();
                         break;
                     case Navigation.ID_APPRAISALS:
+
+
                         intent = AppraiseActivity.getLaunchIntent(context);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+
+                        context.finish();
                         break;
                 }
 
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-
-                context.finish();
                 context.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         };

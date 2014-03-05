@@ -54,7 +54,7 @@ public class AvenirTypeFaceManager {
                 typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Avenir.ttc");
                 break;
             case PROXI_BOLD:
-                typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Avenir.ttc");
+                typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Avenir_Next.ttc");
                 break;
             default:
                 throw new IllegalArgumentException("Unknown `typeface` attribute value " + typefaceValue);

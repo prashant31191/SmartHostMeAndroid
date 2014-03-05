@@ -1,10 +1,13 @@
 package com.smarthost.superbus;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Address;
+import android.support.v4.content.LocalBroadcastManager;
 import co.touchlab.android.superbus.Command;
 import co.touchlab.android.superbus.PermanentException;
 import co.touchlab.android.superbus.TransientException;
+import com.smarthost.ListingsActivity;
 import com.smarthost.data.DatabaseHelper;
 import com.smarthost.data.Listing;
 import com.smarthost.loaders.BroadcastSender;
@@ -13,6 +16,7 @@ import com.turbomanage.httpclient.HttpResponse;
 import com.turbomanage.httpclient.ParameterMap;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
@@ -30,13 +34,20 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
     String entire_home;
     String private_room;
     int bedrooms;
+    int occupancy;
     int bathrooms;
     String date="";
+
+
+    public static String GOT_PRICE = "got_price";
+    public static String PRICE = "price";
+
 
     private static String ADDRESS = "address";
     private static String HOME = "entire_home";
     private static String PRIVATE_ROOM = "private_room";
     private static String BEDROOMS = "bedrooms";
+    private static String OCCUPANCY= "occupancy";
     private static String BATHROOMS = "bathrooms";
     private static String DATE = "date";
 
@@ -44,11 +55,12 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
         setPriority(MUCH_HIGHER_PRIORITY);
     }
 
-    public GetPriceForAddressCommand(String address, String entire_home, String private_room, int bedrooms, int bathrooms, String date) {
+    public GetPriceForAddressCommand(String address, String entire_home, String private_room, int bedrooms, int occupancy, int bathrooms, String date) {
         this.address = address;
         this.entire_home = entire_home;
         this.private_room = private_room;
         this.bedrooms = bedrooms;
+        this.occupancy = occupancy;
         this.bathrooms = bathrooms;
         this.date = date;
     }
@@ -58,6 +70,7 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
         this.entire_home = home+"";
         this.private_room = room+"";
         this.bedrooms = listing.bedrooms;
+        this.occupancy = listing.occupancy;
         this.bathrooms = listing.bathrooms;
         this.date = "";
     }
@@ -86,9 +99,11 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
     void fillParams(ParameterMap parameterMap, Context context) throws SQLException, PermanentException, FileNotFoundException {
         parameterMap.add(ADDRESS,address);
         parameterMap.add(HOME, entire_home);
+        parameterMap.add(PRIVATE_ROOM, private_room);
+        parameterMap.add(OCCUPANCY,occupancy+"");
         parameterMap.add(BEDROOMS,bedrooms+"");
         parameterMap.add(BATHROOMS,bathrooms+"");
-        parameterMap.add(DATE,date+"");
+//        parameterMap.add(DATE,date+"");
     }
 
 
@@ -102,22 +117,10 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
 
         String jsonData = response.getBodyAsString();
 
-        final JSONArray json = new JSONArray(jsonData);
+        final JSONObject json = new JSONObject(jsonData);
 
-        DatabaseHelper.getInstance(context).performDbTransactionOrThrowRuntime(new Callable<Void>()
-        {
-            @Override
-            public Void call() throws Exception
-            {
-
-                List<Listing> listings = ListingHelper.loadListings(context, json, address);
-
-                return null;
-            }
-        }, "Blah. We should dump these messages.  Stack trace is enough.");
-
-        BroadcastSender.makeListingBroadcast(context);
-
+        final Intent intent = new Intent(GOT_PRICE).putExtra(PRICE, json.getDouble("average")+"");
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
 
     }
 }

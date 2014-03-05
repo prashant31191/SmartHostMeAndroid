@@ -33,10 +33,22 @@ public class AppraiseActivity extends BaseSecondaryActivity implements AppraiseF
     }
 
     @Override
-    public void updateListing() {
+    public void updateBedrooms(int number) {
 
         AppraiseFragment fragment = (AppraiseFragment) getSupportFragmentManager().findFragmentByTag(BaseSecondaryActivity.FRAGMENT_TAG);
-        fragment.updateListing();
-        //do nothing
+        fragment.updateBedrooms(number);
+
+    }
+
+    @Override
+    public void updateBathrooms(int number) {
+        AppraiseFragment fragment = (AppraiseFragment) getSupportFragmentManager().findFragmentByTag(BaseSecondaryActivity.FRAGMENT_TAG);
+        fragment.updateBathrooms(number);
+    }
+
+    @Override
+    public void updateHomeOrPrivate(boolean home, boolean private_Room) {
+        AppraiseFragment fragment = (AppraiseFragment) getSupportFragmentManager().findFragmentByTag(BaseSecondaryActivity.FRAGMENT_TAG);
+        fragment.updateHomeOrPrivate(home,private_Room);
     }
 }
