@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:id="@+id/topView"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:background="@drawable/top_small"
+            android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+                android:id="@+id/searchHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="30dp">
+
+
+            <com.smarthost.ui.views.avenir.AvenirTextView
+                    android:id="@+id/searchButton"
+                    android:text="@string/location"
+                    android:drawableTop="@android:drawable/ic_menu_search"
+                    android:layout_width="wrap_content"
+                    android:padding="5dp"
+                    android:textColor="@color/sh_gray"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/sh_white_button_alpha"
+                    android:layout_alignParentLeft="true"
+                    android:layout_height="wrap_content"/>
+
+            <com.smarthost.ui.views.avenir.AvenirEditText
+                    android:id="@+id/searchEditText"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/blue_lettering"
+                    android:background="@color/sh_white_button_alpha"
+                    android:layout_toRightOf="@id/searchButton"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="17dp"
+                    android:paddingBottom="18dp"
+                    android:hint="@string/manhattan"
+                    android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+                android:id="@+id/amountHolder"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@id/searchHolder"
+                android:layout_marginRight="30dp"
+                android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                    android:id="@+id/numberHolder"
+                    android:layout_width="match_parent"
+                    android:background="@color/pinkBG"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:layout_height="wrap_content">
+
+                <LinearLayout
+                        android:id="@+id/actualAmountHolder"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_height="wrap_content">
+
+                    <ImageView
+                            android:id="@+id/whiteLogo"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/white_logo"
+                            android:layout_marginRight="20dp"
+                            android:layout_height="wrap_content"/>
+
+                    <com.smarthost.ui.views.avenir.AvenirTextView
+                            android:id="@+id/actualAmount"
+                            android:layout_width="wrap_content"
+                            android:text="239"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center_vertical"
+
+                            android:textSize="@dimen/text_huge"
+                            android:layout_toRightOf="@id/whiteLogo"
+                            android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <com.smarthost.ui.views.avenir.AvenirTextView
+                        android:layout_below="@+id/actualAmountHolder"
+                        android:layout_width="wrap_content"
+                        android:text="@string/earningPotential"
+                        android:layout_marginTop="5dp"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="@dimen/text_large"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                    android:id="@+id/durationHolder"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/numberHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                <com.smarthost.ui.views.avenir.AvenirTextView
+                        android:id="@+id/day"
+                        android:textColor="@color/blue_lettering"
+                        android:layout_width="wrap_content"
+                        android:text="@string/aDay"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/sh_white_button_alpha"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+                <com.smarthost.ui.views.avenir.AvenirTextView
+                        android:id="@+id/month"
+                        android:textColor="@color/blue_lettering"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="-10dp"
+                        android:gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/sh_white_button_alpha"
+                        android:text="@string/aMonth"
+                        android:layout_height="wrap_content"/>
+
+                <com.smarthost.ui.views.avenir.AvenirTextView
+                        android:id="@+id/year"
+                        android:textColor="@color/blue_lettering"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="-10dp"
+                        android:background="@color/sh_white_button_alpha"
+                        android:text="@string/aYear"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <View
+            android:id="@+id/horizontalBar"
+            android:background="@color/pinkBG"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/topView"
+            android:layout_weight="1"
+            android:layout_height="5dp"/>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_below="@id/horizontalBar"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/formLayout"
+                android:visibility="visible">
+
+            <com.smarthost.ui.widget.CustomViewPager
+                    android:id="@+id/formpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+        </FrameLayout>
+
+
+        <!-- It aint pretty, but it works. Need to do some deeper investigation
+        on setting the gravity to the right
+        -->
+
+    </LinearLayout>
+
+
+
+    <!---->
+    <!--<RelativeLayout-->
+            <!--android:id="@+id/RoomHolder"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/bottom_small"-->
+            <!--android:layout_height="match_parent">-->
+
+
+        <!--<LinearLayout-->
+
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="match_parent"-->
+
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_height="match_parent">-->
+
+
+            <!--<com.smarthost.ui.views.avenir.AvenirTextView-->
+                    <!--android:id="@+id/privateButton"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:text="@string/privateRoom"-->
+                    <!--android:padding="5dp"-->
+                    <!--android:background="@color/sh_white_button_alpha"-->
+                    <!--android:drawableTop="@drawable/gray_door"-->
+                    <!--android:layout_marginRight="-4dp"-->
+                    <!--android:layout_height="wrap_content"/>-->
+
+            <!--<com.smarthost.ui.views.avenir.AvenirTextView-->
+                    <!--android:id="@+id/entireHomeButton"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:text="@string/entireHome"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="-4dp"-->
+                    <!--android:background="@color/sh_white_button_alpha"-->
+                    <!--android:drawableTop="@drawable/blue_house"-->
+                    <!--android:padding="5dp"/>-->
+
+
+
+        <!--</LinearLayout>-->
+
+
+    <!--</RelativeLayout>-->
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/indicatorLayout"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:layout_alignParentBottom="true"
+            android:paddingRight="@dimen/padding_medium"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_gravity="bottom"
+            android:background="@android:color/transparent">
+
+        <com.viewpagerindicator.LinePageIndicator
+                android:id="@+id/indicator"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center" />
+
+    </FrameLayout>
+
+</RelativeLayout>
+

@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.smarthost.ui.adapters.DrawerListAdapter;
 import com.smarthost.util.DrawerUtils;
 import com.smarthost.util.Navigation;
@@ -291,8 +292,11 @@ public class BaseActivity extends BaseTrackerActivity {
      * @param target The view clicked.
      */
     public void onSettingsClick(View target) {
-        Intent intent = SettingsActivity.getLaunchIntent(BaseActivity.this);
-        startActivity(intent);
+
+        Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show();
+        mDrawerLayout.closeDrawer(mDrawerView);
+//        Intent intent = SettingsActivity.getLaunchIntent(BaseActivity.this);
+//        startActivity(intent);
     }
 
     protected void setActionBarItemsAlpha(float delta) {

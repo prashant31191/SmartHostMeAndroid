@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/formLayout"
+            android:visibility="visible">
+
+        <ViewPager
+                android:id="@+id/formpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+    </FrameLayout>
+
+
+    <!-- It aint pretty, but it works. Need to do some deeper investigation
+    on setting the gravity to the right
+    -->
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/indicatorLayout"
+            android:visibility="gone"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:paddingRight="@dimen/padding_medium"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_gravity="bottom"
+            android:background="@android:color/transparent">
+
+        <com.viewpagerindicator.LinePageIndicator
+                android:id="@+id/indicator"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="right" />
+
+    </FrameLayout>
+
+</LinearLayout>

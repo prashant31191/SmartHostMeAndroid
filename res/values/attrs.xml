@@ -24,6 +24,8 @@
         <enum name="avenir_bold" value="1"/>
     </attr>
 
+    <attr name="stackedTabPageIndicatorStyle" format="reference"/>
+
     <declare-styleable name="ImageSwitch">
         <attr name="thumb" format="reference"/>
         <attr name="track" format="reference"/>

@@ -28,6 +28,9 @@
     <string name="twoBedroom">2 Bedroom</string>
     <string name="threeBedroom">3 Bedroom</string>
 
+    <string name="accommodates">Accommodates</string>
+    <string name="bedrooms">Bedrooms</string>
+    <string name="bathrooms">Bathrooms</string>
 
     <string name="manhattan">120 Manhattan Ave</string>
 

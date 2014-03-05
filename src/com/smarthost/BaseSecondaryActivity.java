@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 import com.smarthost.ui.adapters.DrawerListAdapter;
 import com.smarthost.util.DrawerUtils;
 import com.smarthost.util.Navigation;
@@ -199,10 +200,14 @@ public class BaseSecondaryActivity extends BaseTrackerActivity {
      *            {@link #NAV_WORKOUTS} or {@link #NAV_PROGRESS}
      */
     protected void onDrawerItemClick(final int which) {
-        mPendingLaunch = DrawerUtils.buildLaunchRunnable(this, which);
 
-        mDrawerList.setItemChecked(which, true);
+        Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show();
         closeDrawer();
+        return;
+//        mPendingLaunch = DrawerUtils.buildLaunchRunnable(this, which);
+//
+//        mDrawerList.setItemChecked(which, true);
+//        closeDrawer();
     }
 
     /**
@@ -212,15 +217,16 @@ public class BaseSecondaryActivity extends BaseTrackerActivity {
      */
     public void onSettingsClick(View target) {
         closeDrawer();
-        // Use a pending runnable to avoid janky drawer animations.
-        mPendingLaunch = new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = SettingsActivity.getLaunchIntent(BaseSecondaryActivity.this);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        };
+        Toast.makeText(this, "Comings Soon", Toast.LENGTH_SHORT).show();
+//        // Use a pending runnable to avoid janky drawer animations.
+//        mPendingLaunch = new Runnable() {
+//            @Override
+//            public void run() {
+//                Intent intent = SettingsActivity.getLaunchIntent(BaseSecondaryActivity.this);
+//                startActivity(intent);
+//                overridePendingTransition(0, 0);
+//            }
+//        };
     }
 
     protected void closeDrawer() {

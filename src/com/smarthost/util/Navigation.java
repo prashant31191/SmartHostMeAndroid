@@ -14,10 +14,9 @@ public class Navigation {
 
     public static final int COUNT = 3;
 
-    public static final int
-            ID_LISTINGS= 0,
-            ID_MAP= ID_LISTINGS+ 1,
-            ID_APPRAISALS= ID_MAP + 1;
+    public static final int ID_APPRAISALS = 0;
+    public static final int ID_LISTINGS = 1;
+    public static final int ID_MAP =2;
 
 
     public int id;
