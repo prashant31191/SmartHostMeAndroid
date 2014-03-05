@@ -103,7 +103,7 @@ public class AppraiseFragment extends Fragment implements
 
     public void updateListing() {
         if(actualAmount!=null ){
-            actualAmount.setText(((int)(Math.random() * 9999)+1000)+"");
+            actualAmount.setText(((int)(Math.random() * 999)+100)+"");
         }
 
 
@@ -140,7 +140,7 @@ public class AppraiseFragment extends Fragment implements
                                 event.getAction() == KeyEvent.ACTION_DOWN &&
                                         event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                             updateListing();
-                            return true;
+                            return false;
                         }
                         return false;
                     }
@@ -194,7 +194,7 @@ public class AppraiseFragment extends Fragment implements
         indicator.setGapWidth(12 * density);
         indicator.setStrokeWidth(8 * density);
         indicator.setLineWidth(8 * density);
-        indicator.setSelectedColor(0xFFFFFFFF);
+        indicator.setSelectedColor(0xFF4FE2C7);
         indicator.setUnselectedColor(0x99FFFFFF);
 
         indicator.setCurrentItem(pagerPosition);

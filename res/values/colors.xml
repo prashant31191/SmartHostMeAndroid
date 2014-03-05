@@ -35,6 +35,11 @@
     <color name="sh_med_gray">#FF666666</color>
     <color name="sh_dark_gray">#FF333333</color>
 
+
+    <color name="sh_yellow">#FFffed54</color>
+
+    <color name="sh_dark_lettering">#FF474747</color>
+
     <color name="drawer_bg">#DDFFFFFF</color>
 
     <color name="ab_bg">#FF111111</color>

@@ -1,73 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
+                android:gravity="center"
                 android:layout_height="match_parent">
 
     <LinearLayout
-            android:id="@+id/acoommodationHolder"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_height="wrap_content">
-
-        <TextView
-                android:id="@+id/accommodates"
-                android:layout_width="wrap_content"
-                android:text="@string/accommodates"
-                android:drawableTop="@android:drawable/ic_menu_search"
-                android:layout_height="wrap_content"/>
-        <TextView
-                android:id="@+id/numAccommodations"
-                android:layout_width="wrap_content"
-                android:padding="10dp"
-                android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
             android:id="@+id/bedroomHolder"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:padding="10dp"
             android:layout_below="@+id/acoommodationHolder"
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
+            android:background="@color/sh_white_button_alpha"
             android:layout_height="wrap_content">
         <TextView
                 android:id="@+id/bedrooms"
                 android:layout_width="wrap_content"
                 android:text="@string/bedrooms"
-                android:drawableTop="@android:drawable/ic_menu_recent_history"
+                android:drawableTop="@drawable/blue_house"
                 android:layout_height="wrap_content"/>
 
         <TextView
                 android:id="@+id/numBedrooms"
                 android:padding="10dp"
+                android:textSize="@dimen/text_xxxlarge"
+                android:text="0"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
+                android:textColor="@color/blue_lettering"
                 android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <LinearLayout
             android:id="@+id/bathroomHolder"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_below="@+id/bedroomHolder"
             android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:background="@color/sh_white_button_alpha"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content">
+
         <TextView
                 android:id="@+id/bathrooms"
                 android:layout_width="wrap_content"
                 android:text="@string/bathrooms"
-                android:drawableTop="@android:drawable/ic_dialog_email"
+                android:drawableTop="@drawable/blue_door"
                 android:layout_height="wrap_content"/>
 
         <TextView
                 android:id="@+id/numBathrooms"
                 android:layout_width="wrap_content"
+                android:textColor="@color/blue_lettering"
+                android:textSize="@dimen/text_xxxlarge"
                 android:padding="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="0"
                 android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

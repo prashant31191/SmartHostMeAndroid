@@ -28,7 +28,6 @@ public class FormFragment extends Fragment implements View.OnClickListener{
 
     int layoutId = 0;
 
-    TextView numAccommadations;
     TextView numBedrooms;
     TextView numBathrooms;
 
@@ -103,10 +102,6 @@ public class FormFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onClick(View v) {
                 switch (value){
-                    case R.id.accommodates:
-                        numAccommadations.setText(String.valueOf(np.getValue()));
-                        listener.updateListing();
-                        break;
                     case R.id.bedrooms:
                         numBedrooms.setText(String.valueOf(np.getValue()));
                         listener.updateListing();
@@ -152,11 +147,8 @@ public class FormFragment extends Fragment implements View.OnClickListener{
 
                 break;
             case R.layout.fragment_form_sleeping:
-
-                numAccommadations = (TextView)getView().findViewById(R.id.numAccommodations);
                 numBathrooms = (TextView)getView().findViewById(R.id.numBathrooms);
                 numBedrooms = (TextView)getView().findViewById(R.id.numBedrooms);
-                getView().findViewById(R.id.accommodates).setOnClickListener(this);
                 getView().findViewById(R.id.bedrooms).setOnClickListener(this);
                 getView().findViewById(R.id.bathrooms).setOnClickListener(this);
 
@@ -182,13 +174,6 @@ public class FormFragment extends Fragment implements View.OnClickListener{
         TextView entireHome = (TextView) getView().findViewById(R.id.entireHomeButton);
 
         switch (v.getId()){
-
-            case R.id.accommodates:
-
-                value = R.id.accommodates;
-                show();
-
-                break;
             case R.id.bedrooms:
 
                 value = R.id.bedrooms;

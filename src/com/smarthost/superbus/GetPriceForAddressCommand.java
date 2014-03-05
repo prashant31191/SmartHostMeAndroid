@@ -30,7 +30,6 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
     String entire_home;
     String private_room;
     int bedrooms;
-    int accommodates;
     int bathrooms;
     String date="";
 
@@ -38,7 +37,6 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
     private static String HOME = "entire_home";
     private static String PRIVATE_ROOM = "private_room";
     private static String BEDROOMS = "bedrooms";
-    private static String ACCOMMODATES= "accommodates";
     private static String BATHROOMS = "bathrooms";
     private static String DATE = "date";
 
@@ -46,12 +44,11 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
         setPriority(MUCH_HIGHER_PRIORITY);
     }
 
-    public GetPriceForAddressCommand(String address, String entire_home, String private_room, int bedrooms, int accommodates, int bathrooms, String date) {
+    public GetPriceForAddressCommand(String address, String entire_home, String private_room, int bedrooms, int bathrooms, String date) {
         this.address = address;
         this.entire_home = entire_home;
         this.private_room = private_room;
         this.bedrooms = bedrooms;
-        this.accommodates = accommodates;
         this.bathrooms = bathrooms;
         this.date = date;
     }
@@ -61,7 +58,6 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
         this.entire_home = home+"";
         this.private_room = room+"";
         this.bedrooms = listing.bedrooms;
-        this.accommodates = listing.occupancy;
         this.bathrooms = listing.bathrooms;
         this.date = "";
     }
@@ -90,7 +86,6 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
     void fillParams(ParameterMap parameterMap, Context context) throws SQLException, PermanentException, FileNotFoundException {
         parameterMap.add(ADDRESS,address);
         parameterMap.add(HOME, entire_home);
-        parameterMap.add(ACCOMMODATES,accommodates+"");
         parameterMap.add(BEDROOMS,bedrooms+"");
         parameterMap.add(BATHROOMS,bathrooms+"");
         parameterMap.add(DATE,date+"");

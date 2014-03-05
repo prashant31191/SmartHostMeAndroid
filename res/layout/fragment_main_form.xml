@@ -104,6 +104,7 @@
                     <ProgressBar
                             android:id="@+id/progressBar"
                             android:layout_width="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:visibility="gone"
                             android:layout_height="wrap_content"/>
 
@@ -187,6 +188,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:orientation="vertical"
                   android:layout_below="@id/horizontalBar"
+                  android:background="@drawable/bottom_small"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content">
 
