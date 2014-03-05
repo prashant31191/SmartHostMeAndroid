@@ -4,15 +4,17 @@
                 android:id="@+id/RoomHolder"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:background="@drawable/bottom_small"
                 android:layout_height="match_parent">
 
 
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
 
         <com.smarthost.ui.views.avenir.AvenirTextView
@@ -20,8 +22,10 @@
                 android:layout_width="wrap_content"
                 android:text="@string/privateRoom"
                 android:padding="5dp"
+                android:textColor="@color/blue_lettering"
+
                 android:background="@color/sh_white_button_alpha"
-                android:drawableTop="@drawable/gray_door"
+                android:drawableTop="@drawable/blue_door"
                 android:layout_marginRight="-4dp"
                 android:layout_height="wrap_content"/>
 
@@ -29,10 +33,12 @@
                 android:id="@+id/entireHomeButton"
                 android:layout_width="wrap_content"
                 android:text="@string/entireHome"
+                android:textColor="@color/sh_gray"
+
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-4dp"
                 android:background="@color/sh_white_button_alpha"
-                android:drawableTop="@drawable/blue_house"
+                android:drawableTop="@drawable/gray_house"
                 android:padding="5dp"/>
 
 

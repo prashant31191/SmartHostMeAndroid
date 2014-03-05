@@ -1,6 +1,7 @@
 package com.smarthost.ui.fragments;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,12 +34,11 @@ public class FormFragment extends Fragment implements View.OnClickListener{
 
     int value;
 
-    public interface OnExerciseChangeListener {
-        public void onExerciseDeleted(int exerciseId);
+    private FormFragmentListener listener;
 
-        void setExerciseName(String name);
+    public interface FormFragmentListener{
 
-        void onExerciseAdd(int exerciseId);
+        void updateListing();
     }
 
 
@@ -52,8 +52,21 @@ public class FormFragment extends Fragment implements View.OnClickListener{
 
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            listener = (FormFragmentListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + "must implement FormFragmentListener");
+        }
+
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
 
 
@@ -92,12 +105,15 @@ public class FormFragment extends Fragment implements View.OnClickListener{
                 switch (value){
                     case R.id.accommodates:
                         numAccommadations.setText(String.valueOf(np.getValue()));
+                        listener.updateListing();
                         break;
                     case R.id.bedrooms:
                         numBedrooms.setText(String.valueOf(np.getValue()));
+                        listener.updateListing();
                         break;
                     case R.id.bathrooms:
                         numBathrooms.setText(String.valueOf(np.getValue()));
+                        listener.updateListing();
                         break;
 
                 }
@@ -130,7 +146,8 @@ public class FormFragment extends Fragment implements View.OnClickListener{
 
             case R.layout.fragment_form_rooms:
 
-
+                getView().findViewById(R.id.privateButton).setOnClickListener(this);
+                getView().findViewById(R.id.entireHomeButton).setOnClickListener(this);
 
 
                 break;
@@ -160,6 +177,10 @@ public class FormFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
+
+        TextView privateButton = (TextView) getView().findViewById(R.id.privateButton);
+        TextView entireHome = (TextView) getView().findViewById(R.id.entireHomeButton);
+
         switch (v.getId()){
 
             case R.id.accommodates:
@@ -180,9 +201,47 @@ public class FormFragment extends Fragment implements View.OnClickListener{
                 show();
 
                 break;
+            case R.id.privateButton:
+
+
+                if(privateButton.getCurrentTextColor()==getActivity().getResources().getColor(R.color.blue_lettering)){
+//                    privateButton.setTextColor(getActivity().getResources().getColor(R.color.blue_lettering));
+//                    privateButton.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.blue_door), null, null);
+//                    entireHome.setTextColor(getActivity().getResources().getColor(R.color.sh_gray));
+//                    entireHome.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.gray_house), null, null);
+                }else{
+                    privateButton.setTextColor(getActivity().getResources().getColor(R.color.blue_lettering));
+                    privateButton.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.blue_door), null, null);
+                    entireHome.setTextColor(getActivity().getResources().getColor(R.color.sh_gray));
+                    entireHome.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.gray_house), null, null);
+                    listener.updateListing();
+
+                }
+
+
+                break;
+            case R.id.entireHomeButton:
+
+
+                if(entireHome.getCurrentTextColor()==getActivity().getResources().getColor(R.color.blue_lettering)){
+//                    privateButton.setTextColor(getActivity().getResources().getColor(R.color.sh_gray));
+//                    privateButton.setCompoundDrawables(null, getActivity().getResources().getDrawable(R.drawable.gray_door), null, null);
+//                    entireHome.setTextColor(getActivity().getResources().getColor(R.color.blue_lettering));
+//                    entireHome.setCompoundDrawables(null, getActivity().getResources().getDrawable(R.drawable.blue_house), null, null);
+                }else{
+                    privateButton.setTextColor(getActivity().getResources().getColor(R.color.sh_gray));
+                    privateButton.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.gray_door), null, null);
+                    entireHome.setTextColor(getActivity().getResources().getColor(R.color.blue_lettering));
+                    entireHome.setCompoundDrawablesWithIntrinsicBounds(null, getActivity().getResources().getDrawable(R.drawable.blue_house), null, null);
+                    listener.updateListing();
+                }
+
+
+                break;
 
 
         }
+
 
     }
 

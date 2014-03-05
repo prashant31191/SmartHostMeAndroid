@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <RelativeLayout
             android:id="@+id/topView"
@@ -40,6 +40,10 @@
                     android:layout_toRightOf="@id/searchButton"
                     android:layout_marginLeft="-10dp"
                     android:layout_centerHorizontal="true"
+                    android:singleLine="true"
+                    android:lines="1"
+                    android:scrollHorizontally="true"
+                    android:imeOptions="actionDone"
                     android:paddingLeft="15dp"
                     android:paddingRight="12dp"
                     android:paddingTop="17dp"
@@ -93,9 +97,14 @@
                             android:text="239"
                             android:textColor="@color/white"
                             android:layout_gravity="center_vertical"
-
                             android:textSize="@dimen/text_huge"
                             android:layout_toRightOf="@id/whiteLogo"
+                            android:layout_height="wrap_content"/>
+
+                    <ProgressBar
+                            android:id="@+id/progressBar"
+                            android:layout_width="wrap_content"
+                            android:visibility="gone"
                             android:layout_height="wrap_content"/>
 
                 </LinearLayout>
@@ -206,45 +215,45 @@
 
     <!---->
     <!--<RelativeLayout-->
-            <!--android:id="@+id/RoomHolder"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/bottom_small"-->
-            <!--android:layout_height="match_parent">-->
+    <!--android:id="@+id/RoomHolder"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@drawable/bottom_small"-->
+    <!--android:layout_height="match_parent">-->
 
 
-        <!--<LinearLayout-->
+    <!--<LinearLayout-->
 
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_width="match_parent"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_width="match_parent"-->
 
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_height="match_parent">-->
-
-
-            <!--<com.smarthost.ui.views.avenir.AvenirTextView-->
-                    <!--android:id="@+id/privateButton"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:text="@string/privateRoom"-->
-                    <!--android:padding="5dp"-->
-                    <!--android:background="@color/sh_white_button_alpha"-->
-                    <!--android:drawableTop="@drawable/gray_door"-->
-                    <!--android:layout_marginRight="-4dp"-->
-                    <!--android:layout_height="wrap_content"/>-->
-
-            <!--<com.smarthost.ui.views.avenir.AvenirTextView-->
-                    <!--android:id="@+id/entireHomeButton"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:text="@string/entireHome"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginLeft="-4dp"-->
-                    <!--android:background="@color/sh_white_button_alpha"-->
-                    <!--android:drawableTop="@drawable/blue_house"-->
-                    <!--android:padding="5dp"/>-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_height="match_parent">-->
 
 
+    <!--<com.smarthost.ui.views.avenir.AvenirTextView-->
+    <!--android:id="@+id/privateButton"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:text="@string/privateRoom"-->
+    <!--android:padding="5dp"-->
+    <!--android:background="@color/sh_white_button_alpha"-->
+    <!--android:drawableTop="@drawable/gray_door"-->
+    <!--android:layout_marginRight="-4dp"-->
+    <!--android:layout_height="wrap_content"/>-->
 
-        <!--</LinearLayout>-->
+    <!--<com.smarthost.ui.views.avenir.AvenirTextView-->
+    <!--android:id="@+id/entireHomeButton"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:text="@string/entireHome"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="-4dp"-->
+    <!--android:background="@color/sh_white_button_alpha"-->
+    <!--android:drawableTop="@drawable/blue_house"-->
+    <!--android:padding="5dp"/>-->
+
+
+
+    <!--</LinearLayout>-->
 
 
     <!--</RelativeLayout>-->

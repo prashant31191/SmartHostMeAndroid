@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.smarthost.ui.fragments.AppraiseFragment;
+import com.smarthost.ui.fragments.FormFragment;
 import com.smarthost.ui.fragments.ListingsFragment;
 
 /**
@@ -12,7 +13,8 @@ import com.smarthost.ui.fragments.ListingsFragment;
  * Date: 3/2/14
  * Time: 2:53 PM
  */
-public class AppraiseActivity extends BaseSecondaryActivity implements AppraiseFragment.AppraiseFragmentListener{
+public class AppraiseActivity extends BaseSecondaryActivity implements AppraiseFragment.AppraiseFragmentListener,
+        FormFragment.FormFragmentListener{
 
     public static Intent getLaunchIntent(Context context) {
         Intent i = new Intent(context, AppraiseActivity.class);
@@ -30,4 +32,11 @@ public class AppraiseActivity extends BaseSecondaryActivity implements AppraiseF
 
     }
 
+    @Override
+    public void updateListing() {
+
+        AppraiseFragment fragment = (AppraiseFragment) getSupportFragmentManager().findFragmentByTag(BaseSecondaryActivity.FRAGMENT_TAG);
+        fragment.updateListing();
+        //do nothing
+    }
 }

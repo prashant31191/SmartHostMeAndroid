@@ -32,7 +32,7 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
     int bedrooms;
     int accommodates;
     int bathrooms;
-    String date;
+    String date="";
 
     private static String ADDRESS = "address";
     private static String HOME = "entire_home";
@@ -54,6 +54,16 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
         this.accommodates = accommodates;
         this.bathrooms = bathrooms;
         this.date = date;
+    }
+
+    public GetPriceForAddressCommand(Listing listing, boolean home, boolean room) {
+        this.address = listing.addrees;
+        this.entire_home = home+"";
+        this.private_room = room+"";
+        this.bedrooms = listing.bedrooms;
+        this.accommodates = listing.occupancy;
+        this.bathrooms = listing.bathrooms;
+        this.date = "";
     }
 
     @Override
@@ -79,11 +89,11 @@ public class GetPriceForAddressCommand extends AbstractBaseNetworkCommand {
     @Override
     void fillParams(ParameterMap parameterMap, Context context) throws SQLException, PermanentException, FileNotFoundException {
         parameterMap.add(ADDRESS,address);
-        parameterMap.add(HOME, address);
-        parameterMap.add(ACCOMMODATES,address);
-        parameterMap.add(BEDROOMS,address);
-        parameterMap.add(BATHROOMS,address);
-        parameterMap.add(DATE,address);
+        parameterMap.add(HOME, entire_home);
+        parameterMap.add(ACCOMMODATES,accommodates+"");
+        parameterMap.add(BEDROOMS,bedrooms+"");
+        parameterMap.add(BATHROOMS,bathrooms+"");
+        parameterMap.add(DATE,date+"");
     }
 
 

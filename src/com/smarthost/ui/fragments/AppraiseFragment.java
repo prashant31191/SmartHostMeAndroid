@@ -13,10 +13,15 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.*;
+import android.view.inputmethod.EditorInfo;
 import android.widget.*;
+import co.touchlab.android.superbus.BusHelper;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.smarthost.R;
+import com.smarthost.data.Listing;
+import com.smarthost.superbus.GetCityListingsCommand;
+import com.smarthost.superbus.GetPriceForAddressCommand;
 import com.smarthost.ui.adapters.AppraiseFormFragmentPagerAdapter;
 import com.viewpagerindicator.LinePageIndicator;
 import org.apache.commons.lang3.StringUtils;
@@ -25,6 +30,7 @@ import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created with IntelliJ IDEA.
@@ -46,10 +52,14 @@ public class AppraiseFragment extends Fragment implements
     private AppraiseFormFragmentPagerAdapter mPagerAdapter;
 
     TextView searchButton;
+    TextView actualAmount;
 
     private int pagerPosition = 0;
     private boolean portrait;
 
+    EditText searchEditText;
+
+    Listing formListing = new Listing();
 
     public interface AppraiseFragmentListener{
 
@@ -91,6 +101,22 @@ public class AppraiseFragment extends Fragment implements
     }
 
 
+    public void updateListing() {
+        if(actualAmount!=null ){
+            actualAmount.setText(((int)(Math.random() * 9999)+1000)+"");
+        }
+
+
+
+//        formListing.addrees = "Philadelphia, Pa";
+//        formListing.bedrooms = 1;
+//        formListing.bathrooms = 1;
+//        formListing.occupancy = 2;
+//        BusHelper.submitCommandAsync(getActivity(), new GetCityListingsCommand("Philadelphia, Pa"));
+
+    }
+
+
     private void initViews() {
         Log.d(TAG, "initViews");
 
@@ -100,13 +126,30 @@ public class AppraiseFragment extends Fragment implements
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                updateListing();
             }
         });
 
-        TextView actualAmount = (TextView) parent.findViewById(R.id.actualAmount);
+        searchEditText = (EditText)parent.findViewById(R.id.searchEditText);
+        searchEditText.setOnEditorActionListener(
+                new EditText.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                                actionId == EditorInfo.IME_ACTION_DONE ||
+                                event.getAction() == KeyEvent.ACTION_DOWN &&
+                                        event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                            updateListing();
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+
+        actualAmount = (TextView) parent.findViewById(R.id.actualAmount);
         actualAmount.setText("");
 
+        updateListing();
 
         mPager = (ViewPager) parent.findViewById(R.id.formpager);
         indicator = (LinePageIndicator)parent.findViewById(R.id.indicator);
